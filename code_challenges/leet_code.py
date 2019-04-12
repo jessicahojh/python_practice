@@ -203,6 +203,177 @@ def phone_map(number):
 print(phone_map('23'))
 print(phone_map('79'))
 
+# 8. 4Sum
+
+def fourSum(nums, target):
+
+        nums.sort()
+        ans = []
+
+        for a in range(len(nums)-3):
+            if a > 0 and nums[a] == nums[a-1]:
+                continue
+            for b in range(a+1,len(nums)-2):
+                if b > a+1 and nums[b] == nums[b-1]:
+                    continue
+                c, d = b+1, len(nums)-1
+                while c < d:
+                    tot = nums[a]+nums[b]+nums[c]+nums[d]
+                    if tot == target:
+                        ans.append([nums[a],nums[b],nums[c],nums[d]])
+                    if tot <= target:
+                        c += 1
+                        while nums[c] == nums[c-1] and c < d:
+                            c += 1
+                    if tot >= target:
+                        d -= 1
+                        while nums[d] == nums[d+1] and c < d:
+                            d -= 1
+        return ans
+
+print(fourSum([1, 0, -1, 0, -2, 2], 0)) # [[-2, -1, 1, 2], [-2, 0, 0, 2], [-1, 0, 0, 1]]
+
+
+# 9. Remove Nth Node From End of List
+
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+#     def removeNthFromEnd(self, head, n):
+#         curr=head
+#         prev=None
+#         temp=head
+#         for i in range(n):
+#             temp=temp.next
+#         cand=temp==None
+#         while not cand:
+#             temp=temp.next
+#             cand=temp==None
+#             prev=curr
+#             curr=curr.next
+#         if curr==head:
+#             head=head.next
+#         else:
+#             prev.next=curr.next
+#         return head
+
+# print(removeNthFromEnd(2))
+
+# 10. Valid Parentheses
+
+def is_valid(string): # only using one type
+
+    holder = []
+
+    open_brac = ['(']
+    close_brac = [')']
+
+    for brac in string:
+        if len(holder) == 0 and brac in close_brac:
+            return False
+        elif brac in open_brac:
+            holder.append(brac)
+        elif len(holder) > 0 and brac in close_brac:
+            holder.pop()
+
+
+    if len(holder) == 0:
+        return True
+    return False
+
+print(is_valid('((()))'))
+print(is_valid('(())('))
+print(is_valid(')'))
+print('')
+
+
+def is_valid(s): # using all three brac types
+
+    holder = []
+
+    open_brac = '([{'
+    close_brac = ')]}'
+
+   
+    for item in s:
+        if item in open_brac:
+            holder.append(item)
+        else:
+            if not holder or open_brac.find(holder.pop()) != close_brac.find(item):
+                return False
+    return not holder
+
+
+print(is_valid("()"))
+print(is_valid("()[]{}"))
+print(is_valid("([)]"))
+print(is_valid("{[]}"))
+print('')
+
+def test(string): # This works too!
+
+    holder = []
+
+    open_brac = '([{'
+    close_brac = ')]}'
+
+    for brac in string:
+        if len(holder) == 0 and brac in close_brac:
+            return False
+        elif brac in open_brac:
+            holder.append(brac)
+        elif len(holder) > 0 and brac in close_brac and open_brac.find(holder[-1]) == close_brac.find(brac):
+            holder.pop()
+
+
+    if len(holder) == 0:
+        return True
+    return False
+
+print(test("()"))
+print(test("()[]{}"))
+print(test("([)]"))
+print(test("{[]}"))
+
+# 11 Merge Two Sorted Linked Lists
+
+class LL_Node(object):
+#     """Node in a Linked List"""
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList(object):
+    """Linked List"""
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def mergeTwoLists(self, a, b):
+        if a and b:
+            if a.data > b.data:
+                a, b = b, a
+            a.next = self.mergeTwoLists(a.next, b)
+        return a or b
+
+listA_node1 = LL_Node(2)
+listA_node2 = LL_Node(6)
+listA_node3 = LL_Node(7)
+
+listA_node1.next = listA_node2
+listA_node2.next = listA_node3
+
+listB_node1 = LL_Node(1)
+listB_node2 = LL_Node(3)
+listB_node3 = LL_Node(8)
+
+listB_node1.next = listB_node2
+listB_node2.next = listB_node3
+
 
 
 
