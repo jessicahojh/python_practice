@@ -374,6 +374,33 @@ listB_node3 = LL_Node(8)
 listB_node1.next = listB_node2
 listB_node2.next = listB_node3
 
+# 12 Remove Duplicates from Sorted Array
+
+def no_dupes(lst):
+    """Remove dupes in place and return length of new list"""
+
+    lst = set(lst)
+    return (len(lst))
+
+print(no_dupes([0,0,1,1,1,2,2,3,3,4]))
+print('')
+
+# 13 Maximum Subarray
+
+def max_subarray(nums):
+
+    for i in range(1, len(nums)): #range(1, 9)
+        # print("we are on i", i)
+        if nums[i-1] > 0:
+            nums[i] += nums[i-1]
+            print(nums)
+    return max(nums)
+
+print(max_subarray([-2,1,-3,4,-1,2,1,-5,4]))
+
+
+
+
 
 
 

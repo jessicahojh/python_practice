@@ -39,14 +39,13 @@ class LinkedList(object):
 
         new_node = Node(data)
 
-        if self.head is None:
-            self.head = new_node
+        if self.head is None:  # if there's no head
+            self.head = new_node 
 
-        if self.tail is not None:
-            # did list start as empty?
+        if self.tail is not None: # if there's a tail/ if list exist
             self.tail.next = new_node
 
-        self.tail = new_node
+        self.tail = new_node # no matter what, the new node is also a tail now
 
     def remove(self, value):
         """remove node with given value"""
