@@ -1,9 +1,9 @@
 class Node(object):
     """Node in a tree"""
 
-    def __init__(self, data, children):
+    def __init__(self, data, children=None):
         self.data = data
-        self.children = children
+        self.children = children or []
 
         # include parent if you can point upwards on the tree
 
@@ -39,6 +39,8 @@ class Node(object):
 
             to_visit.extend(current.children)
 
+# When to use one over the other?
+
 
 # You don't really need a Tree class 
 
@@ -53,7 +55,7 @@ class Node(object):
 
 #         return "<Tree root={root}>".format(root=self.root)
 
-class BinarySearchNode(object):
+class BinaryTreeNode(object):
     """binary tree node"""
 
     def __init__(self, data, left=None, right=None):
@@ -74,7 +76,7 @@ class BinarySearchNode(object):
 
         while current:
 
-            # print("checking", current.data)
+            print("checking", current.data)
 
             if current.data == sought:
                 return current
@@ -89,44 +91,72 @@ class BinarySearchNode(object):
     def insert(self, new_data):
         """Insert new node with `new_data` to BST tree rooted here."""
 
-        current = self
+        current = self # assume not empty and no dupe
+
+        prev_head = None
+        # to keep track of where the last head was
 
         while current:
-
-            if current.data < new_data:
-                current = current.right
-
-            elif current.data > new_data:
+            prev_head = current
+            if new_data < current.data: 
                 current = current.left
+                # print(current.data)
 
-        if current.data < new_data:
-            self.right = Node(new_data)
+            elif new_data > current.data: 
+                current = current.right
+                # print(current.data)
 
-        else: 
-            self.left = Node(new_data)
+        if new_data < prev_head.data:
+            prev_head.left = BinaryTreeNode(new_data)
+
+        elif new_data > prevHead.data:
+            prev_head.right = BinaryTreeNode(new_data)
+
+
+    def print_tree_in_order(self):
+
+        current = self
+
+        while current.left:
+            self.print_tree_in_order(current.left)
+
+        print(current)
+
+        while current.right:
+            self.print_tree_in_order(current.right)
+
 
 if __name__ == '__main__':
     # Create sample tree and search for nodes in it
 
-    apple = BinarySearchNode("apple")
-    ghost = BinarySearchNode("ghost")
-    fence = BinarySearchNode("fence", apple, ghost)
-    just = BinarySearchNode("just")
-    jackal = BinarySearchNode("jackal", fence, just)
-    zebra = BinarySearchNode("zebra")
-    pencil = BinarySearchNode("pencil", None, zebra)
-    mystic = BinarySearchNode("mystic")
-    nerd = BinarySearchNode("nerd", mystic, pencil)
-    money = BinarySearchNode("money", jackal, nerd)
+    # apple = BinaryTreeNode("apple")
+    # ghost = BinaryTreeNode("ghost")
+    # fence = BinaryTreeNode("fence", apple, ghost)
+    # just = BinaryTreeNode("just")
+    # jackal = BinaryTreeNode("jackal", fence, just)
+    # zebra = BinaryTreeNode("zebra")
+    # pencil = BinaryTreeNode("pencil", None, zebra)
+    # mystic = BinaryTreeNode("mystic")
+    # nerd = BinaryTreeNode("nerd", mystic, pencil)
+    # money = BinaryTreeNode("money", jackal, nerd)
 
-    print("nerd = ", money.find("nerd"))     # should find
-    print("banana = ", money.find("banana"))  # shouldn't find
+    # print("nerd = ", money.find("nerd"))     # should find
+    # print("banana = ", money.find("banana"))  # shouldn't find
 
-    print("nerd = ", money.find("zebra"))     # should find
+    # print("nerd = ", money.find("zebra"))     # should find
 
     # cobra = self.insert("cobra")
 
-    print(money.insert("cobra"))
+
+    # [10, 4, 20, 6, 25, 1]
+    tree = BinaryTreeNode(10)
+    tree.insert(4)
+
+    print(tree.find(4))
+
+    print_tree_in_order(tree)
+
+
 
 
 

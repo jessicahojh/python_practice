@@ -1,3 +1,5 @@
+from stacks_queues_classes import Queue
+
 class PersonNode(object):
     """Node in a graph representing a person"""
 
@@ -34,6 +36,12 @@ class FriendGraph(object):
 
         self.nodes.add(person)
 
+    def add_people(self, people_list):
+        """Add a list of people to our graph"""
+
+        for person in people_list:
+            self.add_person(person)
+
     def set_friends(self, person1, person2):
         """set two people as friends"""
 
@@ -63,7 +71,7 @@ class FriendGraph(object):
         # recursive solution
 
         def are_connected_recursive(self, person1, person2, seen=None):
-        """Are two people connected? DFS"""
+            """Are two people connected? DFS"""
 
         if not seen:
             seen = set()
@@ -84,8 +92,31 @@ class FriendGraph(object):
         return False
 
 
+# Add sample friends
+harry = PersonNode("Harry")
+hermione = PersonNode("Hermione")
+ron = PersonNode("Ron")
+neville = PersonNode("Neville")
+trevor = PersonNode("Trevor")
+fred = PersonNode("Fred")
+draco = PersonNode("Draco")
+crabbe = PersonNode("Crabbe")
+goyle = PersonNode("Goyle")
 
+friends = FriendGraph()
+friends.add_people([harry, hermione, ron, neville, fred, draco, crabbe, goyle])
 
+friends.set_friends(harry, hermione)
+friends.set_friends(harry, ron)
+friends.set_friends(harry, neville)
+friends.set_friends(hermione, ron)
+friends.set_friends(neville, hermione)
+friends.set_friends(neville, trevor)
+friends.set_friends(ron, fred)
+friends.set_friends(draco, crabbe)
+friends.set_friends(draco, goyle)
+
+friends.are_connected(hermione, ron)
 
 
 

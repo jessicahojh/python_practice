@@ -35,10 +35,11 @@ class Queue(object):
         """add item to the end"""
         self._queue.append(item)
 
-    def dequeue(self, item):
+    def dequeue(self):
         """remove from the front"""
 
-        del self._queue[0]
+        # del self._queue[0]
+        return self._queue.pop(0)
 
     def peek(self):
         """return, but don't remove, beginning item"""

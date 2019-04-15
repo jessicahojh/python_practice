@@ -53,8 +53,9 @@ class LinkedList(object):
         # if removing head, make 2nd item (if any) the new .head
         if self.head is not None and self.head.data == value:
             self.head = self.head.next
-            if self.head is None:
-                self.tail = None
+
+            if self.head is None:  # if removing the head made the list empty, 
+                self.tail = None   # then tail also has to be none
             return
 
         # removing something other than head
@@ -77,7 +78,12 @@ class LinkedList(object):
     # def remove_by_index(2)
     # def insert(2, 'cardamom')
 
-
+if __name__ == '__main__':
+    ll = LinkedList()
+    ll.append("apple")
+    ll.append("berry")
+    ll.append("cherry")
+    ll.print_list()
 
 
 

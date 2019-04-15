@@ -12,7 +12,7 @@ def bubble_sort(lst):
                 made_swap = True
 
         if not made_swap:
-            # if no swap, list alrrady sorted
+            # if no swap, list already sorted
             break
 
     return lst
