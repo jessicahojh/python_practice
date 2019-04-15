@@ -12,6 +12,20 @@ class Node(object):
 
         return "<Node {data}>".format(data=self.data)
 
+    def add_to_tree(self, data, new_data):
+        """Add node with new data to tree using DFS"""
+
+        to_visit = [self] # assume not empty and no dupe
+
+        while to_visit:
+            current = to_visit.pop()
+
+            if current.data == data:
+                current.children.append(Node(new_data))
+
+            to_visit.extend(current.children)
+
+
     def find_using_DFS(self, data):  # stack
         """return node object with this data."""
 
@@ -109,7 +123,7 @@ class BinaryTreeNode(object):
         if new_data < prev_head.data:
             prev_head.left = BinaryTreeNode(new_data)
 
-        elif new_data > prevHead.data:
+        elif new_data > prev_head.data:
             prev_head.right = BinaryTreeNode(new_data)
 
 
@@ -148,11 +162,22 @@ if __name__ == '__main__':
     # cobra = self.insert("cobra")
 
 
+    # food = Node('food', ['mexican', 'chinese', 'japanese'])
+    # mexican = Node('mexican', ['burritos', 'salsa', 'tacos'])
+    # chinese = Node('chinese', ['noodles', 'rice', 'dim sum'])
+    # japanese = Node('japanese', ['ramen', 'sushi', 'curry'])
+
+
+
     # [10, 4, 20, 6, 25, 1]
     tree = BinaryTreeNode(10)
     tree.insert(4)
+    tree.insert(20)
+    tree.insert(6)
+    tree.insert(25)
+    tree.insert(1)
 
-    print(tree.find(4))
+    print(tree.find(25))
 
     print_tree_in_order(tree)
 

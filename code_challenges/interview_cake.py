@@ -230,10 +230,98 @@ def get_products_of_all_ints_except_at_index(int_list):
 
 print(get_products_of_all_ints_except_at_index([1, 7, 3, 4])) #  [84, 12, 28, 21]
 
+def find_rotation_point(words):
+
+    first_word = words[0]
+    floor_index = 0
+    ceiling_index = len(words) - 1
+
+    while floor_index < ceiling_index:
+        # Guess a point halfway between floor and ceiling
+        guess_index = floor_index + ((ceiling_index - floor_index) // 2)
+
+        # If guess comes after first word or is the first word
+        if words[guess_index] >= first_word:
+            # Go right
+            floor_index = guess_index
+        else:
+            # Go left
+            ceiling_index = guess_index
+
+        # If floor and ceiling have converged
+        if floor_index + 1 == ceiling_index:
+            # Between floor and ceiling is where we flipped to the beginning
+            # so ceiling is alphabetically first
+            return ceiling_index
+
+print(find_rotation_point([6,7,8,9,10,11,12,1,2,3,4])) # index 7
+print('')
 
 
+def sort_scores(unsorted_scores, highest_possible_score):
+    # List of 0s at indices 0..highest_possible_score
+    score_counts = [0] * (highest_possible_score+1)
+    print(score_counts)
+
+    # Populate score_counts
+    for score in unsorted_scores:
+        print(score)
+        score_counts[score] += 1
+
+    print(score_counts)
+
+    # Populate the final sorted list
+    sorted_scores = []
+
+    # For each item in score_counts
+    for score in range(len(score_counts) - 1, -1, -1):
+        count = score_counts[score]
+        print(count)
+
+        # For the number of times the item occurs
+        for time in range(count):
+            # Add it to the sorted list
+            sorted_scores.append(score)
+
+    return sorted_scores
 
 
+print(sort_scores([3,7,3,5,2,1], 8))
+print('')
+
+
+def merge_ranges(meetings):
+    """Your company built an in-house calendar tool called HiCal. You want to add 
+    a feature to see the times in a day when everyone is available.
+    To do this, you’ll need to know when any team is having a meeting. In HiCal, 
+    a meeting is stored as a tuple of integers (start_time, end_time). These 
+    integers represent the number of 30-minute blocks past 9:00am."""
+
+    # Sort by start time
+    sorted_meetings = sorted(meetings)
+    print(sorted_meetings)
+
+    # Initialize merged_meetings with the earliest meeting
+    merged_meetings = [sorted_meetings[0]]
+    print(merged_meetings)
+
+    for current_meeting_start, current_meeting_end in sorted_meetings[1:]:
+        last_merged_meeting_start, last_merged_meeting_end = merged_meetings[-1]
+
+        # If the current meeting overlaps with the last merged meeting, use the
+        # later end time of the two
+        if (current_meeting_start <= last_merged_meeting_end):
+            merged_meetings[-1] = (last_merged_meeting_start,
+                                   max(last_merged_meeting_end,
+                                       current_meeting_end))
+        else:
+            # Add the current meeting since it doesn't overlap
+            merged_meetings.append((current_meeting_start, current_meeting_end))
+
+    return merged_meetings
+
+
+print(merge_ranges([(0, 1), (3, 5), (4, 8), (10, 12), (9, 10)])) #[(0, 1), (3, 8), (9, 12)]
 
 
 
