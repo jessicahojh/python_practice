@@ -495,7 +495,105 @@ def single_num(lst):
 print(single_num([2,2,1]))
 print(single_num([4,1,2,1,2]))
 
+# Design a stack that supports push, pop, top, and retrieving the minimum 
+# element in constant time.
 
+class MinStack(object):
+
+    def __init__(self):
+
+        self._stack = []
+        
+
+    def push(self, x):
+
+        self._stack.append(x)
+       
+    def pop(self):
+        
+        return self._stack.pop()
+
+    def top(self):
+        
+        return self._stack[-1]
+        
+
+    def getMin(self):
+
+        return min(self._stack)
+
+my_stack = MinStack()
+my_stack.push(4)
+my_stack.push(10)
+my_stack.push(6)
+my_stack.push(1)
+my_stack.top()
+my_stack.getMin()
+       
+
+def majority_element(lst):
+
+    dict = {}
+
+    for num in lst:
+        dict[num] = dict.get(num, 0) + 1
+
+    maximum = max(dict.values())
+
+    for key, value in dict.items():
+        if value == maximum:
+            return key
+
+print(majority_element([3,2,3]))
+print(majority_element([2,2,1,1,1,2,2]))
+print('')
+
+
+# def excel_sheet(letters):
+
+#     dict = {'A':1, 'B':2, 'C':3, 'D':4, 'E':5, 'F':6, 'G':7, 'H':8, 'I':9, 
+#     'J':10, 'K':11, 'L':12, 'M':13, 'N':14, 'O':15, 'P':16, 'Q':17, 'R':18, 
+#     'S':19, 'T':20, 'U':21, 'V':22, 'W':23, 'X':24, 'Y':25, 'Z':26}
+
+#     if len(letters) == 1:
+#         return dict[letters]
+
+#     elif 
+
+
+# print(excel_sheet('P')) #16
+# print(excel_sheet('AB')) #28
+# print(excel_sheet('ZY')) #701
+
+
+def count_numbers(num): 
+
+    new_list = []     
+    num = str(num)      
+    counter = 0     
+
+    current_value = 0 
+
+
+    for value in num:         
+        if current_value == 0:             
+            current_value = value             
+            counter += 1         
+        elif current_value == value:
+            counter += 1 
+
+        elif value != current_value:
+            new_list.append(counter)
+            counter = 0
+            new_list.append(current_value)
+            counter += 1
+            current_value = value
+            
+
+    return new_list
+                         
+          
+print(count_numbers(112233))
 
 
 
