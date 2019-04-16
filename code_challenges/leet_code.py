@@ -374,6 +374,7 @@ listB_node3 = LL_Node(8)
 listB_node1.next = listB_node2
 listB_node2.next = listB_node3
 
+
 # 12 Remove Duplicates from Sorted Array
 
 def no_dupes(lst):
@@ -397,9 +398,102 @@ def max_subarray(nums):
     return max(nums)
 
 print(max_subarray([-2,1,-3,4,-1,2,1,-5,4]))
+print('')
 
 
 
+def count_and_say(n):
+
+    s = '1'
+
+    for x in range(n-1): # range 0 to 4 means 0 to 3
+        let = s[0]
+        temp = ''
+        count = 0
+        # print(let, temp, count)
+
+        for l in s:
+            if let == l:
+                count = count + 1
+                # print(count)
+            else:
+                temp += str(count)+let
+                let = l
+                count = 1
+                # print(count)
+
+        temp += str(count)+let
+        s = temp
+
+    return s
+
+
+print(count_and_say(5)) # 111221
+
+# 1. 1
+# 2. 11
+# 3. 21
+# 4. 1211
+# 5. 111221
+
+
+def combinationSum(candidates, target):
+    def dfs(candidates, start, target, path, res):
+        if target == 0:
+            return res.append(path + [])
+            
+        for i in range(start, len(candidates)):
+            if target - candidates[i] >= 0:
+                path.append(candidates[i])
+                dfs(candidates, i, target - candidates[i], path, res)
+                path.pop()
+    res = []
+    dfs(candidates, 0, target, [], res)
+    return res
+
+print(combinationSum([5,4,2,1], 10))
+
+def climbing_stairs_recursively(n):
+    """You are climbing a stair case. It takes n steps to reach to the top.
+    Each time you can either climb 1 or 2 steps. In how many distinct ways can 
+    you climb to the top? Given n will be a positive integer."""
+
+    if n == 0 or n == 1:
+        return 1    
+
+    return climbing_stairs_recursively(n-1) + climbing_stairs_recursively(n-2) 
+
+
+print(climbing_stairs_recursively(4))
+
+
+def fact(n):
+    """Find n! factorial using recursion."""
+
+    if n == 0:
+        return 1
+
+    elif n >= 1:
+        return n * fact(n-1)
+
+print(fact(4))
+print('')
+
+
+def single_num(lst):
+
+    dict = {}
+
+    for num in lst:
+        dict[num] = dict.get(num, 0) + 1
+
+    for num, count in dict.items():
+        if count == 1:
+            return num
+
+
+print(single_num([2,2,1]))
+print(single_num([4,1,2,1,2]))
 
 
 

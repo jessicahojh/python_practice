@@ -1,5 +1,9 @@
 from stacks_queues_classes import Queue
 
+# A graph organizes items in an interconnected network.
+
+# Each item is a node (or vertex). Nodes are connected by edges
+
 class PersonNode(object):
     """Node in a graph representing a person"""
 
