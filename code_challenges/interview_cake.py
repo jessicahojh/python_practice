@@ -114,32 +114,31 @@ print(word_cloud("We came, we saw, we conquered... then we ate Bill's (Mille-Feu
 
 def get_max_profit(stock_prices):
 
-    smallest = min(stock_prices)
+    # min_price  = stock_prices[0]
+    # max_profit = stock_prices[1] - stock_prices[0]
 
-    # print(smallest) #5
+   
+    # for current_time in range(1, len(stock_prices)):
+    #     current_price = stock_prices[current_time]
 
-    for i, e in enumerate(stock_prices):
-        # print(i)
-        # print(e)
-        if e == smallest:
-            small_index = i
-            break
+    #     potential_profit = current_price - min_price
 
-    # print(e) #5
+    #     max_profit = max(max_profit, potential_profit)
 
-    # print(i) #2
+    #     min_price  = min(min_price, current_price)
 
-    second_half = stock_prices[i+1:] 
+    # return max_profit
 
-    # print(second_half) #[8, 11, 9]
+    max_profit = 0
 
-    greatest = max(second_half) 
+    for earlier_time, earlier_price in enumerate(stock_prices):
 
-    # print(greatest) #11
+        for later_time in range(earlier_time + 1, len(stock_prices)):
+            later_price = stock_prices[later_time]
 
-    best_profit = greatest - smallest
+            potential_profit = later_price - earlier_price
 
-    return best_profit
+            max_profit = max(max_profit, potential_profit)
 
 
 print(get_max_profit([10, 7, 5, 8, 11, 9]))

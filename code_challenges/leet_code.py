@@ -346,6 +346,14 @@ class LL_Node(object):
         self.data = data
         self.next = None
 
+    def print_LL(self):
+
+        current = self
+
+        while current is not None:
+            print(current.data)
+            current = current.next
+
 class LinkedList(object):
     """Linked List"""
 
@@ -353,12 +361,18 @@ class LinkedList(object):
         self.head = None
         self.tail = None
 
-    def mergeTwoLists(self, a, b):
+    @staticmethod
+    def mergeTwoNodes(a, b):
         if a and b:
             if a.data > b.data:
                 a, b = b, a
-            a.next = self.mergeTwoLists(a.next, b)
+            a.next = LinkedList.mergeTwoNodes(a.next, b)
+
+
         return a or b
+
+
+
 
 listA_node1 = LL_Node(2)
 listA_node2 = LL_Node(6)
@@ -372,7 +386,16 @@ listB_node2 = LL_Node(3)
 listB_node3 = LL_Node(8)
 
 listB_node1.next = listB_node2
-listB_node2.next = listB_node3
+listB_node2.next = listA_node3
+
+LinkedList.mergeTwoNodes(listA_node1, listB_node1)
+# listB_node1.print_LL()
+# ^ bug in static method where last node keeps printing data
+
+# three types of methods
+# 1. Static method
+# 2. Class method (instead of taking self, I would take in Class itself)
+# 3. Instance method (everything I've been writing)
 
 
 # 12 Remove Duplicates from Sorted Array
@@ -461,7 +484,8 @@ def climbing_stairs_recursively(n):
     if n == 0 or n == 1:
         return 1    
 
-    return climbing_stairs_recursively(n-1) + climbing_stairs_recursively(n-2) 
+    return climbing_stairs_recursively(n-1) + climbing_stairs_recursively(n-2)
+
 
 
 print(climbing_stairs_recursively(4))
@@ -588,12 +612,152 @@ def count_numbers(num):
             new_list.append(current_value)
             counter += 1
             current_value = value
+
+    new_list.append(counter)
+    new_list.append(current_value)
             
 
     return new_list
                          
           
 print(count_numbers(112233))
+
+
+def house_robber(lst):
+
+    sum_odd = sum(lst[::2])
+    sum_even = sum(lst[1::2])
+
+    return max(sum_odd, sum_even)
+
+print(house_robber([1,2,3,1]))
+print(house_robber([2,7,9,3,1]))
+print('')
+
+
+
+def move_zeros(lst):
+
+    for num in lst:
+        if num == 0:
+            lst.remove(num)
+            lst.append(num)
+        else:
+            continue
+
+    return lst
+
+print(move_zeros([0,1,0,3,12])) # [1,3,12,0,0]
+
+
+def isPowerOfThree(n):
+       
+    if n < 1:
+        return False
+    elif n == 1:
+        return True
+
+    val = 1
+    while val < n:
+        val *= 3
+        if val == n:
+            return True
+    return False
+
+print(isPowerOfThree(27)) #T
+print(isPowerOfThree(0)) #F
+print(isPowerOfThree(9)) #T
+print(isPowerOfThree(45)) #F
+
+
+# First Unique Character in a String
+
+# def first_unique(string):
+#     """Given a string, find the first non-repeating character in it and return 
+#     it's index. If it doesn't exist, return -1."""
+
+#     holder = ''
+
+#     for letter in string:
+#         if holder == '':
+#             holder = letter
+#             continue
+
+
+# print(first_unique("leetcode")) #0
+# print(first_unique("loveleetcode")) #2
+
+def sort_colors(lst): #leetcode Sort Colors Medium
+
+    for i in range(len(lst) - 1):  # for i in [0, 1, 2, 3, 4, 5]
+
+            # keep track of whether we made a swap
+            made_swap = False
+
+            for j in range(len(lst) - 1 - i): # for j in [0, 1, 2, 3, 4, 5]
+                if lst[j] > lst[j + 1]:
+                    lst[j], lst[j + 1] = lst[j + 1], lst[j]
+                    made_swap = True
+
+            if not made_swap:
+                # if no swap, list already sorted
+                break
+
+    return lst 
+
+print(sort_colors([2,0,2,1,1,0])) #[0,0,1,1,2,2]
+print('')
+
+
+
+
+def left_rotation(how_many_num, rotate_num):
+
+    lst_1 = range(1, how_many_num + 1)
+    lst_2 = []
+
+    for num in lst_1:
+        lst_2.append(num)
+
+    # lst_2 = [1,2,3,4,5]
+
+    a = lst_2[rotate_num::]
+    b = lst_2[:rotate_num]
+
+    return a+b
+
+
+print(left_rotation(5, 4)) #[5,1,2,3,4]
+print(left_rotation(5, 2)) 
+print(left_rotation(5, 3))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

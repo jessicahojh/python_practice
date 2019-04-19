@@ -149,13 +149,13 @@ class BinaryTreeNode(object):
 
         current = self
 
-        while current.left:
-            self.print_tree_in_order(current.left)
+        if current.left:
+            current.left.print_tree_in_order()
 
         print(current)
 
-        while current.right:
-            self.print_tree_in_order(current.right)
+        if current.right:
+            current.right.print_tree_in_order()
 
 
 if __name__ == '__main__':
@@ -180,10 +180,16 @@ if __name__ == '__main__':
     # cobra = self.insert("cobra")
 
 
-    # food = Node('food', ['mexican', 'chinese', 'japanese'])
+    food = Node('food', [Node('mexican'), Node('chinese'), Node('japanese')])
     # mexican = Node('mexican', ['burritos', 'salsa', 'tacos'])
     # chinese = Node('chinese', ['noodles', 'rice', 'dim sum'])
     # japanese = Node('japanese', ['ramen', 'sushi', 'curry'])
+    food.add_to_tree('mexican', 'burritos')
+
+    print(food.find_using_BFS('burritos'))
+    print('^look here')
+
+
 
 
 
@@ -196,8 +202,11 @@ if __name__ == '__main__':
     tree.insert(1)
 
     print(tree.find(25))
+    print('')
 
-    print_tree_in_order(tree)
+    tree.print_tree_in_order()
+
+
 
 
 
