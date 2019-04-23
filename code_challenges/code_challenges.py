@@ -387,4 +387,89 @@ print(polish_calc("- 9 * 2 3")) # 9 - (2 * 3) = 3
 # print(polish_calc("/ 6 - 4 2")) # 6 / (4 - 2) = 3
 
 
+# Jason Question 1
+
+def switch_vowels(string):
+
+    vowels = 'aeiou'
+    make_lst = []
+
+    for letter in string:
+        make_lst.append(letter)
+
+    i = 0
+    j = len(string) - 1
+
+    while i < j:
+
+        if make_lst[i] not in vowels:
+            i = i + 1
+            continue
+
+        if make_lst[j] not in vowels:
+            j = j - 1
+            continue
+
+        # if make_lst[i] in vowels and make_lst[j] in vowels:
+        make_lst[i], make_lst[j] = make_lst[j], make_lst[i]
+        i = i + 1
+        j = j - 1
+
+    return ''.join(make_lst)
+
+print(switch_vowels("aebvio")) #oibvea
+print(switch_vowels("dqaebvop")) #dqoebvap
+print(switch_vowels("iqaebvop")) #oqeabvip
+print('')
+
+
+# Jason Question 2
+
+# from collections import defaultdict
+
+
+def find_all_anagrams_in_book(book):
+
+    words = book.split(' ')
+    make_list = []
+
+    for word in words:
+        make_list.append(word)
+
+    dictionary = {}
+
+    for w in make_list: 
+
+        if ''.join(sorted(w)) in dictionary:
+            dictionary[''.join(sorted(w))].append(w) 
+        else:
+            dictionary[''.join(sorted(w))] = [w]
+
+    for x in dictionary.values():
+        if len(x) > 1:
+            print(x)
+
+print(find_all_anagrams_in_book('the cat act all these bear bare in those who tac'))
+
+
+
+# from collections import defaultdict  
+  
+# def printAnagramsTogether(words): 
+#     groupedWords = defaultdict(list) 
+  
+#     # Put all anagram words together in a dictionary  
+#     # where key is sorted word 
+#     for word in words: 
+#         groupedWords["".join(sorted(word))].append(word) 
+  
+#     # Print all anagrams together 
+#     for group in groupedWords.values(): 
+#         print(" ".join(group))       
+  
+  
+# if __name__ == "__main__":    
+#     arr =  ["cat", "dog", "tac", "god", "act"]   
+#     printAnagramsTogether(arr)   
+
 
