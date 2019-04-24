@@ -451,25 +451,41 @@ def find_all_anagrams_in_book(book):
 
 print(find_all_anagrams_in_book('the cat act all these bear bare in those who tac'))
 
+def sort_two_arrays(a, b):
+
+  a = sorted(a)
+  b = sorted(b)
+
+  answer = []
+
+  i = 0
+  j = 0
 
 
-# from collections import defaultdict  
-  
-# def printAnagramsTogether(words): 
-#     groupedWords = defaultdict(list) 
-  
-#     # Put all anagram words together in a dictionary  
-#     # where key is sorted word 
-#     for word in words: 
-#         groupedWords["".join(sorted(word))].append(word) 
-  
-#     # Print all anagrams together 
-#     for group in groupedWords.values(): 
-#         print(" ".join(group))       
-  
-  
-# if __name__ == "__main__":    
-#     arr =  ["cat", "dog", "tac", "god", "act"]   
-#     printAnagramsTogether(arr)   
+  while len(a) != 0 and len(b) != 0: 
+
+    if a[0] <= b[0]:
+      answer.append(a[0])
+      del(a[0])
+      # i = i + 1
+    elif a[0] > b[0]:
+      answer.append(b[0])
+      del(b[0])
+      # j = j + 1
+
+  if len(a) == 0:
+    answer.extend(b)
+
+  else:
+    answer.extend(a)
+
+
+  return answer
+
+
+print(sort_two_arrays([15, 12, 14, 14, 9, 2, 2, 7, 6, 19],[14, 16, 12, 7, 15, 4, 6, 16, 7, 5]))
+
+
+# Result: [2, 2, 4, 5, 6, 6, 7, 7, 7, 9, 12, 12, 14, 14, 14, 15, 15, 16, 16, 19]
 
 

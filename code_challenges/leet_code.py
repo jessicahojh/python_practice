@@ -732,7 +732,136 @@ print(left_rotation(5, 2))
 print(left_rotation(5, 3))
 
 
+def subdomain(lst):
 
+    dictionary = {}
+
+    for x in lst:
+        visits_site = x.split(' ')
+        visits = visits_site[0]
+        site = visits_site[1]
+        print(visits)
+        print(site)
+
+
+
+        if site in dictionary:
+            dictionary[site] += visits
+        elif site not in dictionary:
+            dictionary[site] = visits
+
+        # while len(site) != 0:
+        split_site = site.split(".")
+        del(split_site[0])
+        split_site = '.'.join(split_site)
+
+        print(split_site)
+
+
+
+    print(dictionary)
+
+
+
+
+print(subdomain(["900 google.mail.com", "50 yahoo.com", "1 intel.mail.com", "5 wiki.org"]))
+
+
+
+
+def pow(x, n):
+
+    if n > 0:
+
+        i = 0
+        answer = 1
+
+        while i != n:
+            answer = float(answer) * float(x)
+            i = i + 1
+
+        return answer
+
+    else:
+        x = float(1/x)
+        n = -(n)
+
+        i = 0
+        answer = 1
+
+
+        while i != n:
+            answer = float(answer) * float(x)
+            i = i + 1
+
+        return answer
+
+
+print(pow(2.000, 10)) 
+print(pow(2.100, 3)) 
+print(pow(2.000, -2)) 
+print('')
+
+# def permutations(lst):
+
+#     dict = {}
+
+#     for 
+
+
+# print(permutations([1,2,3]))
+
+def rotate_image(lst):
+
+
+    return (list(zip(*(lst[::-1]))))
+
+print(rotate_image([
+  [1,2,3],
+  [4,5,6],
+  [7,8,9]
+]))
+
+#[
+#  [7,4,1],
+#  [8,5,2],
+#  [9,6,3]
+# ]
+
+# input [1,2,3,4,5,6,7,8,9]
+# output [7,4,1,8,5,2,9,6,3]
+
+print(rotate_image([
+  [ 5, 1, 9,11],
+  [ 2, 4, 8,10],
+  [13, 3, 6, 7],
+  [15,14,12,16]
+]))
+
+# [
+#   [15,13, 2, 5],
+#   [14, 3, 4, 1],
+#   [12, 6, 8, 9],
+#   [16, 7,10,11]
+# ]
+
+
+def position_of_element(lst, target):
+
+    if target not in lst:
+        return [-1,-1]
+
+    answer = []
+
+    for i, num in enumerate(lst):
+        if num == target:
+            answer.append(i)
+
+    return answer
+
+
+print(position_of_element([5,7,7,8,8,10], 8)) #[3,4]
+print(position_of_element([5,7,7,8,8,10], 6)) #[-1,-1]
 
 
 
