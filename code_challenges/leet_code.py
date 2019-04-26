@@ -862,12 +862,103 @@ def position_of_element(lst, target):
 
 print(position_of_element([5,7,7,8,8,10], 8)) #[3,4]
 print(position_of_element([5,7,7,8,8,10], 6)) #[-1,-1]
+print('')
+
+def valid_sudoku(lst):
+
+    # check if rows are unique 
+
+
+    # for row in lst:
+
+    #     i = 0
+    #     row_checker = []
+
+    #     if row[i] not in row_checker and row[i].isnumeric():
+    #         row_checker.append(row[i])
+    #         i = i + 1
+
+    #     elif row[i] == ".":
+    #         i = i + 1
+
+    #     elif row[i] in row_checker:
+    #         return False
+
+    # row_valid = True
+
+
+    # check if columns are unique
+    # x = 0
+    # while x != 9:
+
+    #     column_checker = []
+
+    #     for row in lst:
+    #         if row[x] not in column_checker and row[x].isnumeric():
+    #             column_checker.append(row[x])
+            
+    #         elif row[x] == ".":
+    #             continue
+
+    #         elif row[x] in column_checker:
+    #             return False
+
+    #     x = x + 1
+
+    # column_valid = True
+
+
+    # check if sub-boxes are unique
+
+    full_list = []
+
+    for row in lst:
+        full_list.extend(row)
+
+    dictionary = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[], 7:[], 8:[], 9:[]}
 
 
 
 
 
 
+
+print(valid_sudoku([
+  ["5","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+])) # True
+
+
+print(valid_sudoku([
+  ["8","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["8",".",".",".","6",".",".",".","3"],
+  ["4",".",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+])) # False b/c 8 repeats in left column
+
+print(valid_sudoku([
+  ["8","3",".",".","7",".",".",".","."],
+  ["6",".",".","1","9","5",".",".","."],
+  [".","9","8",".",".",".",".","6","."],
+  ["2",".",".",".","6",".",".",".","3"],
+  ["4","9",".","8",".","3",".",".","1"],
+  ["7",".",".",".","2",".",".",".","6"],
+  [".","6",".",".",".",".","2","8","."],
+  [".",".",".","4","1","9",".",".","5"],
+  [".",".",".",".","8",".",".","7","9"]
+])) # False b/c 8 repeats in left column
 
 
 

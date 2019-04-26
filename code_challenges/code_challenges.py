@@ -489,3 +489,86 @@ print(sort_two_arrays([15, 12, 14, 14, 9, 2, 2, 7, 6, 19],[14, 16, 12, 7, 15, 4,
 # Result: [2, 2, 4, 5, 6, 6, 7, 7, 7, 9, 12, 12, 14, 14, 14, 15, 15, 16, 16, 19]
 
 
+
+
+def rev_string_recursively(string):
+
+    if len(string) == 1:
+        return string
+
+
+
+    return string[-1:] + rev_string_recursively(string[:-1])
+
+
+
+print(rev_string_recursively('balloon')) #noollab
+
+
+
+def sum_range(n):
+
+    if n == 1:
+        return 1
+
+    return sum_range(n-1) + n
+
+
+
+
+print(sum_range(3)) # 1+2+3 = 6
+print(sum_range(5)) # 1+2+3+4+5 = 15
+
+
+
+
+def factorial(n):
+
+    if n == 1:
+        return 1
+
+
+    return factorial(n-1) * n
+
+
+print(factorial(3)) #1*2*3 = 6
+print(factorial(5)) #1*2*3*4*5 = 120
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
