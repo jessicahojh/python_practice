@@ -503,6 +503,12 @@ def rev_string_recursively(string):
 
 
 print(rev_string_recursively('balloon')) #noollab
+#n+balloo
+#no+ballo
+#noo+ball
+#nool+bal
+#nooll+ba
+#noolla+b  now returns that
 
 
 
@@ -535,8 +541,55 @@ print(factorial(3)) #1*2*3 = 6
 print(factorial(5)) #1*2*3*4*5 = 120
 
 
+def warm_temp(lst):
+
+    answer = []
+
+    i = 0
+    
+    while i != len(lst)-1:
+
+        if lst[i] > max(lst[i+1:]):
+            answer.append(0)
+            i = i + 1
+
+        else:
+
+            j = i + 1
+            if lst[j] > lst[i]:
+                answer.append(j-i)
+                i = i + 1
+            
+            elif lst[j] < lst[i]:
+                while lst[j] < lst[i]:
+                    j = j + 1
+                answer.append(j-i)
+                i = i + 1
+                
+
+    answer.append(0)
+
+    return answer
+
+print(warm_temp([73, 74, 75, 71, 69, 72, 76, 73])) #[1, 1, 4, 2, 1, 1, 0, 0]
 
 
+def jump_game(lst):
+
+    i = 0
+
+    while i != len(lst)-1:
+        i = i + lst[i]
+
+    if i == len(lst)-1:
+        return True
+    else:
+        return False
+
+
+
+print(jump_game([2,3,1,1,4])) #true
+print(jump_game([3,2,1,0,4])) #false
 
 
 

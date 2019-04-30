@@ -52,6 +52,22 @@ class Queue(object):
         return not self._queue
 
 
+mystack = Stack()
+
+mystack.push("a")
+mystack.push("b")
+mystack.push("c")
+mystack.push("d")
+print(mystack.peek())
+
+
+myqueue = Queue()
+
+myqueue.enqueue(1)
+myqueue.enqueue(2)
+myqueue.enqueue(3)
+myqueue.enqueue(4)
+print(myqueue.peek())
 
 
 

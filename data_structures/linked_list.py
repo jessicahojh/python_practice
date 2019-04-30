@@ -47,6 +47,11 @@ class LinkedList(object):
 
         self.tail = new_node # no matter what, the new node is also a tail now
 
+    def insert(self, data):
+        """insert node with data to anywhere in the middle of the linked list"""
+
+        pass
+
     def remove(self, value):
         """remove node with given value"""
 
