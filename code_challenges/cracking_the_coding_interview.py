@@ -246,9 +246,95 @@ class LinkedList(object):
 # 2.4 Partition
     def partition(self, x):
 
-        
+
         pass
 
+
+class Double_Node(object):
+
+    def __init__(self, data):
+
+        self.data = data
+        self.next = None
+        self.prev = None
+
+class Double_LinkedList(object):
+
+    def __init__(self):
+
+        self.head = None
+        self.tail = None
+
+    def double_append(self, data):
+        """append node with data to end of list"""
+
+        new_node = Double_Node(data)
+
+        if self.head is None:  # if there's no head
+            self.head = new_node 
+
+        if self.tail is not None: # if there's a tail/ if list exist
+            self.tail.next = new_node
+            self.prev = self.tail
+
+        self.tail = new_node
+
+    def double_print_list(self):
+
+        current = self.head
+
+        while current is not None:
+            print(current.data)
+            current = current.next
+
+    def double_print_backwards(self):
+
+        current = self.tail
+        
+        while current is not None:
+            print(current.data)
+            current = current.prev
+
+# 2.5 Sum Lists
+
+    # def sum_rev_list(self, x, y):
+
+    #     current_1 = self.tail
+    #     current_2 = 
+
+    #     while current is not None:
+
+    # pass
+
+
+# 2.6 Palindrome
+
+    def is_palindrome(self):
+
+        count = 0
+
+        current = self.head
+
+        while current is not None:
+            count += 1
+            current = current.next
+
+        c = 0
+
+        current_head = self.head
+        current_tail = self.tail
+
+        while c < count/2:
+          
+            if current_head.data == current_tail.data:
+                print(current_head.data, current_tail.data)
+                current_head = current_head.next
+                current_tail = current_tail.prev
+                c += 1
+            else:
+                return False
+
+        return True
 
 test = LinkedList()
 test.append('a')
@@ -265,6 +351,58 @@ test.print_list()
 print(test.return_kth_to_last(3))
 test.delete_middle('b')
 test.print_list()
+print('')
+
+# ll_1 = Double_LinkedList()
+# ll_1.double_append(7)
+# ll_1.double_append(1)
+# ll_1.double_append(6)
+
+# ll_2 = Double_LinkedList()
+# ll_2.double_append(5)
+# ll_2.double_append(9)
+# ll_2.double_append(2)
+
+# ll_1.double_print_list()
+# ll_2.double_print_list()
+
+check_pal_1 = Double_LinkedList()
+check_pal_1.double_append(1)
+check_pal_1.double_append(2)
+check_pal_1.double_append(3)
+check_pal_1.double_append(2)
+check_pal_1.double_append(1)
+
+check_pal_2 = Double_LinkedList()
+check_pal_2.double_append(1)
+check_pal_2.double_append(2)
+check_pal_2.double_append(3)
+check_pal_2.double_append(3)
+check_pal_2.double_append(2)
+check_pal_2.double_append(1)
+
+check_pal_3 = Double_LinkedList()
+check_pal_3.double_append(1)
+check_pal_3.double_append(2)
+check_pal_3.double_append(3)
+check_pal_3.double_append(4)
+check_pal_3.double_append(5)
+check_pal_3.double_append(6)
+
+check_pal_4 = Double_LinkedList()
+check_pal_4.double_append(1)
+check_pal_4.double_append(2)
+check_pal_4.double_append(3)
+check_pal_4.double_append(4)
+check_pal_4.double_append(5)
+
+# print(check_pal_1.is_palindrome())
+# print(check_pal_2.is_palindrome())
+# print(check_pal_3.is_palindrome())
+# print(check_pal_4.is_palindrome())
+
+check_pal_4.double_print_backwards()
+
 
 
 
