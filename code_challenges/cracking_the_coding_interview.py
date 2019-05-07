@@ -453,6 +453,24 @@ def living_people(lst):
 print(living_people([(1994, 2000), (1999, 2002), (1998, 1999)])) #1999
 
 
+def english_integer(number):
 
+    number = str(number)
+
+    number_in_list = []
+
+    for n in number:
+        number_in_list.append(n)
+
+    answer = []
+
+    while number_in_list:
+        number_in_list.pop()
+
+
+    print(number_in_list)
+
+
+print(english_integer(1234)) #one thousand two hundred thirty four
 
 

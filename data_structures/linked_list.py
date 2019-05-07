@@ -83,12 +83,70 @@ class LinkedList(object):
     # def remove_by_index(2)
     # def insert(2, 'cardamom')
 
+class NodeForDoubly(object):
+
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+        self.prev = None
+
+
+class DoublyLinkedList(object):
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+
+    def append(self, data):
+
+        new_node = NodeForDoubly(data)
+
+        if self.head is None:  # if there's no head
+            new_node.prev = None
+            self.head = new_node 
+            self.tail = new_node
+
+        else: 
+            self.tail.next = new_node
+            new_node.prev = self.tail
+            self.tail.next.next = None
+            self.tail = new_node
+
+
+    def print_forward(self):
+
+        current = self.head
+
+        while current is not None:
+            print(current.data)
+            current = current.next
+
+
+    def print_backward(self):
+
+        current = self.tail
+
+        while current is not None:
+            print(current.data)
+            current = current.prev
+
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.append("apple")
     ll.append("berry")
     ll.append("cherry")
     ll.print_list()
+
+
+    testdouble = DoublyLinkedList()
+    testdouble.append("a")
+    testdouble.append("b")
+    testdouble.append("c")
+    testdouble.append("d")
+    testdouble.print_forward()
+    testdouble.print_backward()
 
 
 
