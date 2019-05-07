@@ -290,7 +290,7 @@ class Double_LinkedList(object):
     def double_print_backwards(self):
 
         current = self.tail
-        
+
         while current is not None:
             print(current.data)
             current = current.prev
@@ -406,13 +406,51 @@ check_pal_4.double_print_backwards()
 
 
 
+# Moderate page 181
+
+# 16.1 Number Swapper (swap in place)
+
+def num_swapper(lst, num_1, num_2):
+
+    for index1, num1 in enumerate(lst):
+        if num1 == num_1:
+            save_num1 = num_1
+            
+    for index2, num2 in enumerate(lst):
+        if num2 == num_2:
+            lst[index2] = save_num1
+            lst[index1] = num2
+
+    return lst
+
+print('')
+print(num_swapper([2, 7, 8, 1, 6], 8, 6)) #[2, 7, 6, 1, 8]
+print('')
 
 
 
+def living_people(lst):
 
+    """find the year with the most living people"""
 
+    dictionary = {}
 
+    for pairs in lst:
+        a, b = pairs
+        while a <= b:
+            if a in dictionary.keys():
+                dictionary[a] += 1
+            elif a not in dictionary.keys():
+                dictionary[a] = 1
+            a += 1
 
+    most = max(dictionary.values())
+
+    for year, count in dictionary.items():
+        if count == most:
+            return year
+
+print(living_people([(1994, 2000), (1999, 2002), (1998, 1999)])) #1999
 
 
 

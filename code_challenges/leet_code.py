@@ -961,9 +961,21 @@ print(valid_sudoku([
 ])) # False b/c 8 repeats in left column
 
 
+# rectangle overlap
+
+def is_overlap(rec1, rec2):
+
+    # if rec1[2] <= rec2[0] or rec2[2] <= rec1[0] or rec1[3] <= rec2[1] or rec2[3] <= rec1[1]:
+    #     return False
+    # return True
+
+    return rec1[0] < rec2[2] and rec2[0] < rec1[2] and rec1[1] < rec2[3] and rec2[1] < rec1[3]
 
 
+print(is_overlap([0,0,2,2], [1,1,3,3])) #true
+print(is_overlap([0,0,1,1], [1,0,2,1])) #false
 
+print(is_overlap([-3,-2,1,1], [-1,0,2,1])) #true
 
 
 
