@@ -108,8 +108,6 @@ class BinaryTreeNode(object):
 
         while current:
 
-            print("checking", current.data)
-
             if current.data == sought:
                 return current
 
@@ -132,11 +130,9 @@ class BinaryTreeNode(object):
             prev_head = current
             if new_data < current.data: 
                 current = current.left
-                # print(current.data)
 
             elif new_data > current.data: 
                 current = current.right
-                # print(current.data)
 
         if new_data < prev_head.data:
             prev_head.left = BinaryTreeNode(new_data)
@@ -145,7 +141,7 @@ class BinaryTreeNode(object):
             prev_head.right = BinaryTreeNode(new_data)
 
 
-    def print_tree_in_order(self):
+    def print_tree_in_order(self): #recursive
 
         current = self
 

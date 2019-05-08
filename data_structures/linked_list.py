@@ -132,6 +132,65 @@ class DoublyLinkedList(object):
             current = current.prev
 
 
+
+class NodeForCircular(object):
+
+    def __init__(self, data):
+
+        self.data = data
+        self.next = None
+
+
+class CircularLinkedList(object):
+
+    def __init__(self):
+
+        self.head = None
+
+    def prepend_circular(self, data):
+        
+        new_node = NodeForCircular(data)
+
+        current = self.head
+        new_node.next = self.head
+
+        if not self.head:
+            new_node.next = new_node
+
+        else:
+            while current.next != self.head:
+                current = current.next
+            current.next = new_node
+
+        self.head = new_node
+
+
+
+    def append_circular(self, data):
+        
+        if not self.head:
+            self.head = NodeForCircular(data)
+            self.head.next = self.head
+
+        else:
+            new_node = Node(data)
+            current = self.head
+            while current.next != self.head:
+                current = current.next
+            current.next = new_node
+            new_node.next = self.head
+
+    def print_list_circular(self):
+        
+        current = self.head
+
+        while current:
+            print(current.data)
+            current = current.next
+            if current == self.head:
+                break
+
+
 if __name__ == '__main__':
     ll = LinkedList()
     ll.append("apple")
@@ -139,6 +198,7 @@ if __name__ == '__main__':
     ll.append("cherry")
     ll.print_list()
 
+    print('')
 
     testdouble = DoublyLinkedList()
     testdouble.append("a")
@@ -147,6 +207,18 @@ if __name__ == '__main__':
     testdouble.append("d")
     testdouble.print_forward()
     testdouble.print_backward()
+
+    print('')
+
+    testcircular = CircularLinkedList()
+    testcircular.append_circular(1)
+    testcircular.append_circular(2)
+    testcircular.append_circular(3)
+    testcircular.append_circular(4)
+    testcircular.print_list_circular()
+    testcircular.prepend_circular(0)
+    testcircular.print_list_circular()
+
 
 
 

@@ -13,9 +13,6 @@ class PersonNode(object):
         if adjacent is None:
             adjacent = set()
 
-        # assert isinstance(adjacent, set), \
-        #     "adjacent must be a set!"
-
         self.name = name
         self.adjacent = adjacent
 
