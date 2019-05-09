@@ -25,6 +25,13 @@ def sum_range(n):
 print(sum_range(3)) # 1+2+3 = 6
 print(sum_range(5)) # 1+2+3+4+5 = 15
 
+# 5 
+# 5-1 + 5
+# 4-1 + 4
+# 3-1 + 3
+# 2-1 + 2
+# 1
+
 
 
 def factorial(n):
@@ -48,6 +55,7 @@ def find_uppercase(string, index=0):
 
     if index == len(string) - 1:
         return "No uppercase character found"
+
     return find_uppercase(string, index + 1)
 
 
@@ -94,4 +102,96 @@ def product(x, y):
 
 print(product(5, 2))
 print(product(3, 6))
+
+# Here’s how you do that by threading it through each recursive call 
+#(i.e. passing the updated current state to each recursive call as arguments):
+def sum_recursive(current_number, accumulated_sum):
+ 
+    if current_number == 11:
+        return accumulated_sum
+
+    else:
+        return sum_recursive(current_number + 1, accumulated_sum + current_number)
+
+
+print(sum_recursive(1, 0))
+
+# Here’s how you maintain the state by keeping it in global scope:
+
+# Global mutable state
+current_number = 1
+accumulated_sum = 0
+
+
+def sum_recursive():
+    global current_number
+    global accumulated_sum
+    # Base case
+    if current_number == 11:
+        return accumulated_sum
+    # Recursive case
+    else:
+        accumulated_sum = accumulated_sum + current_number
+        current_number = current_number + 1
+        return sum_recursive()
+
+print(sum_recursive())
+
+
+# MIT Tower problem
+
+def printMove(fr, to):
+    print('move from ' + str(fr) + ' to ' + str(to))
+
+def Towers(n, fr, to, spare):
+
+    if n == 1:
+        printMove(fr, to)
+
+    else:
+        Towers(n-1, fr, spare, to)
+        Towers(1, fr, to, spare)
+        Towers(n-1, spare, to, fr)
+
+
+print(Towers(4, 'a', 'b', 'c'))
+
+
+def isPalindrome(s):
+
+    def toChars(s):
+        s = s.lower()
+        answer = ''
+
+        for c in s:
+            if c in 'abcdefghijklmnopqrstuvwxyz':
+                answer = answer + c
+        return answer
+
+    def isPal(s):
+        if len(s) <= 1:
+            return True
+        else:
+            return s[0] == s[-1] and isPal(s[1:-1])
+
+    return isPal(toChars(s))
+
+print(isPalindrome('asdfdsa')) # True
+print(isPalindrome('asdfda')) # False
+print(isPalindrome('asdffdsa')) # True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
