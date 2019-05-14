@@ -978,11 +978,36 @@ print(is_overlap([0,0,1,1], [1,0,2,1])) #false
 print(is_overlap([-3,-2,1,1], [-1,0,2,1])) #true
 
 
+def decode_ways(string):
+
+    options = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]
+
+    if len(string) == 1:
+        return 1
+
+    if len(string) == 2 and string[1] == "0":
+        return 1
+
+    if len(string) == 2 and string[0] == '1':
+        return 2
+
+    if int(string) in range(21, 27):
+        return 2
+
+    count = 1
+    if len(string) == 3:
+        if int(string[1:]) in options:
+            count += 1
+        if int(string[0:2]) in options:
+            count += 1
+
+    return count
 
 
 
 
-
+print(decode_ways('12'))
+print(decode_ways('226'))
 
 
 

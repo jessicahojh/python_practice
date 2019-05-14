@@ -574,22 +574,23 @@ def warm_temp(lst):
 print(warm_temp([73, 74, 75, 71, 69, 72, 76, 73])) #[1, 1, 4, 2, 1, 1, 0, 0]
 
 
-def jump_game(lst):
+# def jump_game(lst):
 
-    i = 0
+#     i = 0
 
-    while i != len(lst)-1:
-        i = i + lst[i]
+#     while i != len(lst)-1:
+#         i = i + lst[i]
 
-    if i == len(lst)-1:
-        return True
-    else:
-        return False
+#     if i == len(lst)-1:
+#         return True
+#     else:
+#         return False
 
 
 
-print(jump_game([2,3,1,1,4])) #true
-print(jump_game([3,2,1,0,4])) #false
+# print(jump_game([2,3,1,1,4])) #true
+# print(jump_game([3,2,1,0,4])) #false
+
 
 
 
