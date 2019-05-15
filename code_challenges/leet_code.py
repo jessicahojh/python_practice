@@ -1008,6 +1008,37 @@ def decode_ways(string):
 
 print(decode_ways('12'))
 print(decode_ways('226'))
+print('')
+
+
+# Container with most water
+
+def most_water(lst):
+
+    maximum = 0
+    
+    for i, data in enumerate(lst):
+        if i > len(lst) - 2:
+            break
+
+        else:
+
+            j = i + 1
+
+            while j != len(lst):
+                
+                min_height = min(lst[i], lst[j])
+                distance = j - i
+                volume = min_height * distance
+
+                if volume > maximum:
+                    maximum = volume
+
+                j = j + 1
+
+    return maximum
+
+print(most_water([1,8,6,2,5,4,8,3,7]))
 
 
 
