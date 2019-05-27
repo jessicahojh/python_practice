@@ -127,7 +127,9 @@ class BinaryTreeNode(object):
         # to keep track of where the last head was
 
         while current:
+
             prev_head = current
+            
             if new_data < current.data: 
                 current = current.left
 

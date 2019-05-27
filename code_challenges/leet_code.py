@@ -1039,6 +1039,108 @@ def most_water(lst):
     return maximum
 
 print(most_water([1,8,6,2,5,4,8,3,7]))
+print('')
+
+
+# def wordBreak(s, words):
+
+#     ok = [True]
+
+#     print(ok)
+
+#     for i in range(1, len(s)+1):
+#         ok += any(ok[j] and s[j:i] in words for j in range(i)),
+
+#     return ok[-1]
+
+# print(wordBreak("leetcode", ["leet", "code"])) # true
+# print(wordBreak("applepenapple", ["apple", "pen"])) # true
+# print(wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])) # false
+
+
+# try to recode the above without comprehension
+# def wordBreak(s, words):
+
+#     ok = [True]
+
+#     print(ok)
+
+#     for i in range(1, len(s)+1):
+#         for j in range(i):
+#             if ok[j] and s[j:i] in words:
+#                 ok += ok[j] and s[j:i]
+
+#     return ok[-1]
+
+# print(wordBreak("leetcode", ["leet", "code"])) # true
+# print(wordBreak("applepenapple", ["apple", "pen"])) # true
+# print(wordBreak("catsandog", ["cats", "dog", "sand", "and", "cat"])) # false
+
+
+# zigzag conversion
+
+def zigzag(string, rows):
+
+    dictionary = {}
+
+    for x in range(1, rows+1):
+        dictionary[x] = []
+
+    string = list(string)
+
+    i = 1
+    direction = 'up'
+
+    while string:
+        n = string.pop(0)
+        # print(i)
+        dictionary[i] += n
+
+        if i < rows and direction == 'up':
+            i = i + 1
+        elif i == rows:
+            i = i - 1
+            direction = 'down'
+
+        elif i == 1 and direction == 'down':
+            i = i + 1
+            direction = 'up'
+        elif i < rows and direction == 'down':
+            i = i - 1
+
+
+    answer = []
+    for a in dictionary.values():
+        answer.extend(a)
+
+    return ''.join(answer)
+
+
+print(zigzag("PAYPALISHIRING", 3))
+print(zigzag("PAYPALISHIRING", 4))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
