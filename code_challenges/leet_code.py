@@ -1120,21 +1120,88 @@ print(zigzag("PAYPALISHIRING", 3))
 print(zigzag("PAYPALISHIRING", 4))
 
 
+# swap nodes in pairs
+# Given a linked list, swap every two adjacent nodes and return its head.
+# Given 1->2->3->4, you should return the list as 2->1->4->3
+
+# class Node(object):
+
+#     def __init__(self, data):
+#         self.data = data
+#         self.next = None 
+
+# class LL(object):
+
+#     def __init__(self):
+#         self.head = None
+#         self.tail = None
+
+#     def append(self, data):
+
+#         new_node = Node(data)
+
+#         if self.head is None:  
+#             self.head = new_node 
+
+#         if self.tail is not None: 
+#             self.tail.next = new_node
+
+#         self.tail = new_node
+
+#     def swap_pairs(self):
+
+#         current = self.head 
+
+#         while current:
+#             if current == self.head:
+#                 current.next = self.head
+#                 current.next.next = current
+
+#     def print_list(self):
+
+#         current = self.head
+
+#         while current is not None:
+#             print(current.data)
+#             current = current.next
+
+# test_ll = LL()
+# test_ll.append(1)
+# test_ll.append(2)
+# test_ll.append(3)
+# test_ll.append(4)
+# test_ll.swap_pairs()
+# test_ll.print_list()
+
+
+def merge_intervals(lst):
+
+    i = 0
+    j = 1
+
+    count = 0
+
+    while count != len(lst):
+
+        if lst[j][0] <= lst[i][1]:
+            lst[i] = [lst[i][0], lst[j][1]]
+            del lst[j]
+            count = count + 1
+
+        else:
+            i = i + 1
+            j = i + 1
+            count = count + 1
+
+
+    return lst
 
 
 
+print(merge_intervals([[1,3],[2,6],[8,10],[15,18]])) #[[1,6],[8,10],[15,18]]
+print(merge_intervals([[1,4],[4,5]])) #[[1,5]]
 
-
-
-
-
-
-
-
-
-
-
-
+print(merge_intervals([[1,4],[6,10],[9,11],[14,19]])) 
 
 
 
