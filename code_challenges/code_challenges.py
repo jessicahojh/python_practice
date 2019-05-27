@@ -592,6 +592,67 @@ print(warm_temp([73, 74, 75, 71, 69, 72, 76, 73])) #[1, 1, 4, 2, 1, 1, 0, 0]
 # print(jump_game([3,2,1,0,4])) #false
 
 
+# practice trees
+
+class Tree(object):
+
+    def __init__(self, data, children=None):
+
+        self.data = data
+        self.children = children or []
+
+    def add_to_tree(self, data, new_data):
+
+        to_visit = [self]
+
+        while to_visit:
+
+            current = to_visit.pop()
+
+            if current.data == data:
+                current.children.append(Tree(new_data)) 
+            to_visit.extend(current.children)
+
+    def find_using_DFS(self, sought):
+
+        to_visit = [self]
+
+        while to_visit:
+
+            current = to_visit.pop()
+
+            if current.data == sought:
+                return("We found it!")
+            to_visit.extend(current.children)
+
+        return("We couldn't find it")
+
+
+    def find_using_BFS(self, sought):
+        
+        to_visit = [self]
+
+        while to_visit:
+
+            current = to_visit.pop(0)
+
+            if current.data == sought:
+                return("We found it!")
+            to_visit.extend(current.children)
+
+        return("We couldn't find it")
+
+test_tree = Tree("people", [])
+test_tree.add_to_tree("people", "TK")
+test_tree.add_to_tree("people", "Jessica")
+test_tree.add_to_tree("Jessica", "Jennifer")
+
+print(test_tree.find_using_DFS("Jennifer"))
+print(test_tree.find_using_BFS("Matthew"))
+
+            
+
+
 
 
 

@@ -1111,7 +1111,7 @@ def zigzag(string, rows):
 
     answer = []
     for a in dictionary.values():
-        answer.extend(a)
+        answer.extend(a)  
 
     return ''.join(answer)
 
@@ -1204,6 +1204,75 @@ print(merge_intervals([[1,4],[4,5]])) #[[1,5]]
 print(merge_intervals([[1,4],[6,10],[9,11],[14,19]])) 
 
 
+def restore_IP_adress(string):
+
+    made_into_lst = list(string)
+    dot = '.'
+    answer = []
+
+    answer.append(made_into_lst[0:3])
+    answer[0].extend(dot)
+    answer[0].extend(made_into_lst[3:6])
+    answer[0].extend(dot)
+    answer[0].extend(made_into_lst[6:8])
+    answer[0].extend(dot)
+    answer[0].extend(made_into_lst[8:])
+
+    answer.append(made_into_lst[0:3])
+    answer[1].extend(dot)
+    answer[1].extend(made_into_lst[3:6])
+    answer[1].extend(dot)
+    answer[1].extend(made_into_lst[6:9])
+    answer[1].extend(dot)
+    answer[1].extend(made_into_lst[9:])
+
+    for x in answer:
+        ''.join(x)
+        print(x)
+
+
+    # print(answer)
+
+
+print(restore_IP_adress('25525511135')) #["255.255.11.135", "255.255.111.35"]
+
+
+print('space')
+print('')
+
+def version(v_1, v_2):
+
+    for i_1, x in enumerate(v_1):
+        if x == '.':
+            index_1 = i_1
+            break  
+
+
+    for i_2, y in enumerate(v_2):
+        if y == '.':
+            index_2 = i_2
+            break
+
+
+    if v_1[:index_1] > v_2[:index_2]:
+        return 1
+
+    elif v_1[:index_1] < v_2[:index_2]:
+        return -1
+
+    else:
+        
+
+
+
+
+
+print(version('0.1', '1.1')) # -1
+print(version('1.0.1', '1.0')) # 1
+print(version('1.0.1.1', '1.0.1')) # 1
+print(version('3.0.1.1', '21.0.1')) # -1
+
+# print(version('1.0.1', '1.')) # 1
 
 
 

@@ -152,6 +152,7 @@ class CircularLinkedList(object):
         new_node = NodeForCircular(data)
 
         current = self.head
+
         new_node.next = self.head
 
         if not self.head:
@@ -173,7 +174,7 @@ class CircularLinkedList(object):
             self.head.next = self.head
 
         else:
-            new_node = Node(data)
+            new_node = NodeForCircular(data)
             current = self.head
             while current.next != self.head:
                 current = current.next
