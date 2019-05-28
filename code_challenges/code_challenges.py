@@ -735,6 +735,12 @@ print(a)
 b = (1, 2)
 print(b)
 
+c = (1,2,3,4,5,6)
+
+# c[1] = 4 #can't do this
+
+
+print(c)
 
 
 
