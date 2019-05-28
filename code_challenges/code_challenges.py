@@ -650,7 +650,90 @@ test_tree.add_to_tree("Jessica", "Jennifer")
 print(test_tree.find_using_DFS("Jennifer"))
 print(test_tree.find_using_BFS("Matthew"))
 
+
+# Practice Binary tree class
+
+class BinaryTree(object):
+
+    def __init__(self, data, left=None, right=None):
+
+        self.data = data
+        self.left = left
+        self.right = right
+
+    def add_to_binary_tree(self, new_data):
+
+        current = self
+
+        new_node = BinaryTree(new_data)
+
+        while current:
+
+            previous_head = current
+
+            if new_data < current.data:
+                current = current.left
+
+            elif new_data > current.data:
+                current = current.right
+
+
+        if new_data < previous_head.data:
+            previous_head.left = new_node
+        elif new_data > previous_head.data:
+            previous_head.right = new_node
+
+
+
+    def find(self, data):
+
+        current = self
+
+        while current:
+
+            if data == current.data:
+                return("We found it!")
+
+            elif data < current.data:
+                current = current.left
+
+            elif data > current.data:
+                current = current.right 
+
+        return("We couldn't find it")
+
+
+
+test_binary_tree = BinaryTree(4)
+test_binary_tree.add_to_binary_tree(6)
+test_binary_tree.add_to_binary_tree(2)
+test_binary_tree.add_to_binary_tree(10)
+test_binary_tree.add_to_binary_tree(8)
+test_binary_tree.add_to_binary_tree(0)
+test_binary_tree.add_to_binary_tree(3)
+
+print(test_binary_tree.find(10))
+print(test_binary_tree.find(22))
+
+
             
+# set
+
+a = set()
+
+a.add(1)
+a.add(2)
+a.add(5)
+a.add(1)
+
+print(a)
+
+
+
+# tuple
+
+b = (1, 2)
+print(b)
 
 
 
