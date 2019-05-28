@@ -119,7 +119,103 @@ friends.set_friends(draco, goyle)
 
 friends.are_connected(hermione, ron)
 
+print('')
+
+# Graph without using friends as example
+
+class GraphNode(object):
+
+    def __init__(self, data, adjacent=None):
+
+        if adjacent is None:
+            adjacent = set()
+
+        self.data = data
+        self.adjacent = adjacent
+
+class Graph(object):
+
+    def __init__(self):
+
+        self.nodes = set()
+
+    def add(self, data):
+
+        self.nodes.add(data)
+
+    def add_many(self, data_list):
+
+        for data in data_list:
+            self.add(data)
+
+    def set_data(self, data_1, data_2):
+        """set two data as connected"""
+
+        data_1.adjacent.add(data_2)
+        data_2.adjacent.add(data_1)
+
+    def are_connected(self, data_1, data_2):
+        """Are the two data connected? BFS"""
+
+        possible_nodes = Queue()
+        seen = set()
+        possible_nodes.enqueue(data_1)
+        seen.add(data_1)
+
+        while not possible_nodes.is_empty():
+            data = possible_nodes.dequeue()
+            print("checking", data)
+            if data is data_2:
+                return True
+            else:
+                for d in data.adjacent - seen:
+                    possible_nodes.enqueue(d)
+                    seen.add(d)
+                    print("added to queue:", d)
+        return False
+
+        # recursive solution
+
+        def are_connected_recursive(self, data_1, data_2, seen=None):
+            """Are the two data connected? DFS"""
+
+        if not seen:
+            seen = set()
+
+        if data_1 is data_2:
+            return True
+
+        seen.add(data_1) # keep track that we've visited here
+        print("adding", data_1)
+
+        for data in data_1.adjacent:
+
+            if data not in seen:
+
+                if self.are_connected_recursive(data, data_2, seen):
+                    return True
+
+        return False
 
 
+a = GraphNode("a")
+b = GraphNode("b")
+c = GraphNode("c")
+d = GraphNode("d")
+e = GraphNode("e")
+f = GraphNode("f")
 
+
+graph = Graph()
+graph.add_many([a,b,c,d,e,f])
+
+graph.set_data(a, c)
+graph.set_data(c, b)
+graph.set_data(c, e)
+graph.set_data(e, a)
+graph.set_data(e, f)
+graph.set_data(f, b)
+
+graph.are_connected(e, a)
+graph.are_connected(a, f)
 
