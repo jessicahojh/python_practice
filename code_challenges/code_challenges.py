@@ -743,6 +743,27 @@ c = (1,2,3,4,5,6)
 print(c)
 
 
+"""
+Convert numeric string to number withoutusing python's built in functions.
+"""
+
+
+def str2int(num_str):
+
+    dec_places = {6:100000, 5:10000, 4:1000, 3:100, 2:10, 1:1}
+    char_digit = {'0':0, '1':1, '2':2, '3':3, '4':4, '5':5,  '6':6, '7':7, '8':8, '9':9}
+
+    iter = len(num_str)
+
+    number = 0
+
+    for char in num_str:
+        number += (char_digit[char] * dec_places[iter])
+        iter -= 1
+
+    return number
+
+print(str2int('623297'))
 
 
 

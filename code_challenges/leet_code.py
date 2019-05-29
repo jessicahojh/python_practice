@@ -813,7 +813,6 @@ print('')
 
 def rotate_image(lst):
 
-
     return (list(zip(*(lst[::-1]))))
 
 print(rotate_image([
@@ -1240,41 +1239,79 @@ print(restore_IP_adress('25525511135')) #["255.255.11.135", "255.255.111.35"]
 print('space')
 print('')
 
-def version(v_1, v_2):
+# def version(v_1, v_2):
 
-    for i_1, x in enumerate(v_1):
-        if x == '.':
-            index_1 = i_1
-            break  
-
-
-    for i_2, y in enumerate(v_2):
-        if y == '.':
-            index_2 = i_2
-            break
+#     for i_1, x in enumerate(v_1):
+#         if x == '.':
+#             index_1 = i_1
+#             break  
 
 
-    if v_1[:index_1] > v_2[:index_2]:
-        return 1
+#     for i_2, y in enumerate(v_2):
+#         if y == '.':
+#             index_2 = i_2
+#             break
 
-    elif v_1[:index_1] < v_2[:index_2]:
-        return -1
 
-    else:
-        
+#     if v_1[:index_1] > v_2[:index_2]:
+#         return 1
 
+#     elif v_1[:index_1] < v_2[:index_2]:
+#         return -1
+
+#     else:
 
 
 
 
-print(version('0.1', '1.1')) # -1
-print(version('1.0.1', '1.0')) # 1
-print(version('1.0.1.1', '1.0.1')) # 1
-print(version('3.0.1.1', '21.0.1')) # -1
+
+
+# print(version('0.1', '1.1')) # -1
+# print(version('1.0.1', '1.0')) # 1
+# print(version('1.0.1.1', '1.0.1')) # 1
+# print(version('3.0.1.1', '21.0.1')) # -1
 
 # print(version('1.0.1', '1.')) # 1
 
 
+
+#Write a function to find all the 10-letter-long sequences (substrings) 
+#that occur more than once in a DNA molecule.
+
+def repeated_dna(string):
+
+    length_of_str = len(string)
+    make_to_lst = list(string)
+    holder = []
+    i = 0
+    j = 0
+
+    dictionary = {}
+
+    while i != length_of_str - 9:
+        while j < i + 10:
+            holder.append(make_to_lst[j])
+            j = j + 1
+
+        if ''.join(holder) not in dictionary.keys():
+            dictionary[''.join(holder)] = 1
+        else:
+            dictionary[''.join(holder)] += 1
+        holder = []    
+        i = i + 1
+        j = i
+
+    answer = []
+
+    for k, v in dictionary.items():
+        if v >= 2:
+            answer.append(k)
+
+
+    return answer
+
+print(repeated_dna("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))
+#["AAAAACCCCC", "CCCCCAAAAA"]
 
 
 
