@@ -1323,36 +1323,38 @@ def elimination_game(n):
         lst.append(x)
 
 
+    direction = 'up'
+
     while len(lst) != 1:
 
-        if len(lst) % 2 != 0:
+        if direction == 'up':
+            lst = lst[1::2]
+            direction = 'down'
+            # print(lst)
+        elif direction == 'down':
+            lst = lst[::-1]
+            direction = 'up'
+            # print(lst)
 
-        lst = lst[1::2]
-        print(lst)
-        lst = lst[::2]
-        print(lst)
-
-        else:
-            lst = lst[::2]
-            # lst = lst[::2]
-
-    # return lst
+    return lst
 
 
 print(elimination_game(9))
 print(elimination_game(10))
 print(elimination_game(11))
 print(elimination_game(12))
+print(elimination_game(13))
 
 # 1,2,3,4,5,6,7,8,9
 # 2,4,6,8
 # 2,6
-# 6
+# 6 
 
 # 1,2,3,4,5,6,7,8,9,10
 # 2,4,6,8,10
 # 4,8
 # 8
+
 
 # 1,2,3,4,5,6,7,8,9,10,11
 # 2,4,6,8,10
