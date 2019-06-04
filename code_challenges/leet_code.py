@@ -1312,7 +1312,62 @@ def repeated_dna(string):
 
 print(repeated_dna("AAAAACCCCCAAAAACCCCCCAAAAAGGGTTT"))
 #["AAAAACCCCC", "CCCCCAAAAA"]
+print('')
 
+
+def elimination_game(n):
+
+    lst = []
+
+    for x in range(1,n+1):
+        lst.append(x)
+
+
+    while len(lst) != 1:
+
+        if len(lst) % 2 != 0:
+
+        lst = lst[1::2]
+        print(lst)
+        lst = lst[::2]
+        print(lst)
+
+        else:
+            lst = lst[::2]
+            # lst = lst[::2]
+
+    # return lst
+
+
+print(elimination_game(9))
+print(elimination_game(10))
+print(elimination_game(11))
+print(elimination_game(12))
+
+# 1,2,3,4,5,6,7,8,9
+# 2,4,6,8
+# 2,6
+# 6
+
+# 1,2,3,4,5,6,7,8,9,10
+# 2,4,6,8,10
+# 4,8
+# 8
+
+# 1,2,3,4,5,6,7,8,9,10,11
+# 2,4,6,8,10
+# 4,8
+# 8
+
+# 1,2,3,4,5,6,7,8,9,10,11,12
+# 2,4,6,8,10,12
+# 2,6,10
+# 6
+
+# 1,2,3,4,5,6,7,8,9,10,11,12,13
+# 2,4,6,8,10,12
+# 2,6,10
+# 6
 
 
 
