@@ -1371,7 +1371,38 @@ print(elimination_game(13))
 # 2,6,10
 # 6
 
+# Reconstruct Original Digits from English
 
+def digits_from_eng(string):
+
+    dictionary = {'zero': 0, 'one': 1, 'two': 2, 'three': 3, 'four': 4,
+    'five':5, 'six': 6, 'seven':7, 'eight': 8, 'nine': 9}
+
+    pass
+
+
+print(digits_from_eng("owoztneoer"))
+print(digits_from_eng("fviefuro"))
+
+
+def assign_cookies(children, cookies):
+
+    answer = 0
+
+    for num in cookies: 
+        if num in children:
+            answer += 1
+            for i, child in enumerate(children):
+                if child == num:
+                    del(children[i])
+                    break
+
+    return answer
+
+
+
+print(assign_cookies([1,2,3], [1,1])) #1
+print(assign_cookies([1,2], [1,2,3])) #2
 
 
 
