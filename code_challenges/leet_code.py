@@ -1403,6 +1403,28 @@ def assign_cookies(children, cookies):
 
 print(assign_cookies([1,2,3], [1,1])) #1
 print(assign_cookies([1,2], [1,2,3])) #2
+print('')
+
+
+def keys_and_rooms(rooms):
+
+    current_room = 0
+    next_room = current_room + 1
+
+    while current_room != len(rooms)-1:
+
+        if next_room not in rooms[current_room]:
+            return False
+
+        elif next_room in rooms[current_room]:
+            current_room = current_room + 1
+            next_room = current_room + 1
+
+    return True
+
+
+print(keys_and_rooms([[1],[2],[3],[]]))
+print(keys_and_rooms([[1,3],[3,0,1],[2],[0]]))
 
 
 
