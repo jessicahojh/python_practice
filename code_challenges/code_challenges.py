@@ -766,6 +766,28 @@ def str2int(num_str):
 print(str2int('623297'))
 
 
+# practice bubble sort
+
+def bubble_sort(lst):
+
+    for i in range(0, len(lst)-1):
+
+        made_swap = False
+
+        for j in range(0, len(lst) - 1 - i):
+
+            if lst[j] > lst[j+1]:
+                lst[j], lst[j+1] = lst[j+1], lst[j]
+                made_swap = True
+
+        if not made_swap:
+            break
+
+    return lst
+
+print(bubble_sort([2,5,10,22,1,4]))
+
+
 
 
 

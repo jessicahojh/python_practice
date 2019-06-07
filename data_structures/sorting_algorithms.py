@@ -6,10 +6,11 @@ def bubble_sort(lst):
         # keep track of whether we made a swap
         made_swap = False
 
-        for j in range(len(lst) - 1 - i): # for j in [1, 2, 3, 4]
+        for j in range(len(lst) - 1 - i): # for j in [0, 1, 2, 3, 4]
             if lst[j] > lst[j + 1]:
                 lst[j], lst[j + 1] = lst[j + 1], lst[j]
                 made_swap = True
+                print(lst)
 
         if not made_swap:
             # if no swap, list already sorted
@@ -18,8 +19,7 @@ def bubble_sort(lst):
     return lst
 
 print(bubble_sort([4, 2, 10, 6, 9, 1]))
-
-print(range(5))
+print('')
 
 
 ##############################################################################
@@ -29,7 +29,7 @@ def merge_sort(lst):
     Runtime: O(n log n)"""
 
     if len(lst) > 1:
-        mid = len(lst) // 2
+        mid = len(lst) // 2  # // divides and rounds down
         left = lst[:mid]
         right = lst[mid:]
 
@@ -66,6 +66,7 @@ def merge_sort(lst):
     return lst
 
 print(merge_sort([8, 2, 1, 9, 10, 5]))
+print('')
 
 ###############################################################################
 
@@ -80,14 +81,17 @@ def quicksort(lst):
     import random
 
     def _quicksort(lst, first, last):
+        
         if first < last:
 
             # Find pivot point
 
             pivot = first + random.randrange(last - first + 1)
+            print("Pivot is: ", pivot)
             lst[pivot], lst[last] = lst[last], lst[pivot]
 
             pivot = first
+            print(lst)
 
             for i in range(pivot, last):
                 if lst[i] <= lst[last]:
