@@ -20,6 +20,8 @@ def bubble_sort(lst):
 
 print(bubble_sort([4, 2, 10, 6, 9, 1]))
 print('')
+print('')
+print('')
 
 
 ##############################################################################
@@ -28,10 +30,15 @@ def merge_sort(lst):
     """Divide and conquer: reduce to lists of 0-1 items, then recombine.
     Runtime: O(n log n)"""
 
+    print('Unsorted list is:', lst)
+
     if len(lst) > 1:
         mid = len(lst) // 2  # // divides and rounds down
+        print('mid is:', mid)
         left = lst[:mid]
+        print('left is:', left)
         right = lst[mid:]
+        print('right is:', right)
 
         merge_sort(left)
         merge_sort(right)
@@ -42,6 +49,7 @@ def merge_sort(lst):
         # Interleave left and right into list
 
         while left_index < len(left) and right_index < len(right):
+            print('list before while loop', lst)
             if left[left_index] < right[right_index]:
                 lst[new_index] = left[left_index]
                 left_index += 1
@@ -49,6 +57,7 @@ def merge_sort(lst):
                 lst[new_index] = right[right_index]
                 right_index += 1
             new_index += 1
+            print(lst)
         # merge-lecture-snippet-end
 
         # If lists were uneven length, add remainder of longer list
@@ -67,6 +76,15 @@ def merge_sort(lst):
 
 print(merge_sort([8, 2, 1, 9, 10, 5]))
 print('')
+print('')
+print('')
+
+
+def merge_sort_yt_version(lst):
+    pass
+
+
+print(merge_sort_yt_version([3,2,13,6,1,8,4,10])) #[1,2,3,4,6,8,10,13]
 
 ###############################################################################
 
@@ -81,7 +99,7 @@ def quicksort(lst):
     import random
 
     def _quicksort(lst, first, last):
-        
+
         if first < last:
 
             # Find pivot point

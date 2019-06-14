@@ -182,6 +182,23 @@ print(isPalindrome('asdffdsa')) # True
 
 
 
+def count_cons(s):
+    """count number of non vowel letters in string"""
+
+    if len(s) == 0:
+        return 0
+
+    count = 0
+    vowels = 'aeiou'
+
+    if s[0] not in vowels:
+        return 1 + count_cons(s[1:])
+    else:
+        return count_cons(s[1:])
+
+print(count_cons('geekforgeeks'))
+
+
 
 
 

@@ -21,6 +21,42 @@ class LinkedList(object):
             print(current.data)
             current = current.next
 
+    def print_list_reverse(self):
+
+        prev = None
+        current = self.head
+
+        while current:
+            nxt = current.next
+            current.next = prev
+
+            prev = current
+            current = nxt
+
+        self.head = prev
+
+        return(self.print_list())
+
+
+    def print_lst_reverse_recursive(self):
+
+        def _reverse_recursive(current, prev):
+
+            if not current:
+                return prev
+
+            nxt = current.next
+            current.next = prev
+            prev = current
+            current = nxt
+
+            return _reverse_recursive(current, prev)
+
+        self.head = _reverse_recursive(current=self.head, prev=None)
+
+        return(self.print_list())
+
+
     def find(self, data):
         """does this data exist in our list?"""
 
@@ -198,6 +234,9 @@ if __name__ == '__main__':
     ll.append("berry")
     ll.append("cherry")
     ll.print_list()
+    ll.print_list_reverse()
+    ll.print_lst_reverse_recursive()
+    ll.print_lst_reverse_recursive()
 
     print('')
 
