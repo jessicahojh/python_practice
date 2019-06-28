@@ -453,24 +453,46 @@ def living_people(lst):
 print(living_people([(1994, 2000), (1999, 2002), (1998, 1999)])) #1999
 
 
-def english_integer(number):
+# def english_integer(number):
 
-    number = str(number)
+#     number = str(number)
 
-    number_in_list = []
+#     number_in_list = []
 
-    for n in number:
-        number_in_list.append(n)
+#     for n in number:
+#         number_in_list.append(n)
 
-    answer = []
+#     answer = []
 
-    while number_in_list:
-        number_in_list.pop()
-
-
-    print(number_in_list)
+#     while number_in_list:
+#         number_in_list.pop()
 
 
-print(english_integer(1234)) #one thousand two hundred thirty four
+#     print(number_in_list)
+
+
+# print(english_integer(1234)) #one thousand two hundred thirty four
+
+
+def count_2s(n):
+    """count the number of 2's that appear from 0-n"""
+
+    count = 0
+
+    for num in range(n+1):
+        num = str(num)
+        for n in num:
+            if n == "2":
+                count = count + 1
+
+    return count
+
+
+print(count_2s(25)) #9
+
+
+
+
+
 
 
