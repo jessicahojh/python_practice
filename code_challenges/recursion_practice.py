@@ -201,6 +201,43 @@ print(count_cons('geekforgeeks'))
 
 
 
+# Write a function that takes a list of integers, and finds the maximum of the 
+# list using recursion.
+
+def find_max(lst):
+
+    pass
+
+print(find_max([2,5,7,1,8,3]))
+
+# Write a function that prints out each element in a given list using recursion.
+
+def print_each(lst):
+
+    pass
+
+print(print_each([4,5,2,7,1]))
+
+# Write a function that prints out the integers 1 through 5 using recursion.
+
+def print_to_5():
+
+    pass
+
+print(print_to_5())
+
+# Write a function that takes a list of integers, and returns a list of each 
+# integer in that list doubled, using recursion.
+
+def doubled(lst):
+
+    pass
+
+print(doubled(lst))
+
+
+
+
 
 
 

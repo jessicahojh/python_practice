@@ -1428,6 +1428,22 @@ print(keys_and_rooms([[1,3],[3,0,1],[2],[0]]))
 
 
 
+def practice_dict(word):
+
+    dictionary = {}
+
+    for char in word:
+        if char not in dictionary.keys():
+            dictionary[char] = 1
+        else:
+            dictionary[char] += 1
+
+    return dictionary
+
+
+print(practice_dict("elephant"))
+
+
 
 
 

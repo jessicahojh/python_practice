@@ -491,6 +491,12 @@ def count_2s(n):
 print(count_2s(25)) #9
 
 
+def volume_of_histogram(lst):
+
+
+print(volume_of_histogram([0,0,4,0,0,6,0,0,3,0,5,0,1,0,0,0])) #26
+
+
 
 
 
