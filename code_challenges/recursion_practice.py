@@ -206,7 +206,10 @@ print(count_cons('geekforgeeks'))
 
 def find_max(lst):
 
-    pass
+    if len(lst) == 1:
+        return lst[0]
+    else:
+        return max(lst[0], find_max(lst[1:]))
 
 print(find_max([2,5,7,1,8,3]))
 
@@ -214,7 +217,12 @@ print(find_max([2,5,7,1,8,3]))
 
 def print_each(lst):
 
-    pass
+    if len(lst) == 0:
+        return ""             
+    else:              
+        print(lst[0])  
+
+        return print_each(lst[1:])
 
 print(print_each([4,5,2,7,1]))
 
@@ -233,7 +241,7 @@ def doubled(lst):
 
     pass
 
-print(doubled(lst))
+print(doubled([3,5,10]))
 
 
 
