@@ -228,18 +228,60 @@ print(print_each([4,5,2,7,1]))
 
 # Write a function that prints out the integers 1 through 5 using recursion.
 
+current_number = 1
+
 def print_to_5():
 
-    pass
+    global current_number
+
+    if current_number == 6:
+        return ""
+
+    else:
+        print(current_number)
+        current_number += 1
+
+        return print_to_5()
+
 
 print(print_to_5())
+
+# # Here’s how you maintain the state by keeping it in global scope:
+
+# # Global mutable state
+# current_number = 1
+# accumulated_sum = 0
+
+
+# def sum_recursive():
+#     global current_number
+#     global accumulated_sum
+#     # Base case
+#     if current_number == 11:
+#         return accumulated_sum
+#     # Recursive case
+#     else:
+#         accumulated_sum = accumulated_sum + current_number
+#         current_number = current_number + 1
+#         return sum_recursive()
+
+# print(sum_recursive())
 
 # Write a function that takes a list of integers, and returns a list of each 
 # integer in that list doubled, using recursion.
 
+doubled_lst = []
+
 def doubled(lst):
 
-    pass
+
+    if len(lst) == 0:
+        return doubled_lst
+
+    else:
+        doubled_lst.append(lst[0] * 2)
+        return doubled(lst[1:])
+
 
 print(doubled([3,5,10]))
 
