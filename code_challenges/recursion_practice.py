@@ -285,6 +285,35 @@ def doubled(lst):
 
 print(doubled([3,5,10]))
 
+# import pdb
+# pdb.set_trace()
+
+def doubled_by_threading(lst, answer_lst):
+
+    if len(lst) == 0:
+        return answer_lst
+
+    else:
+        answer_lst.append(lst[0]*2)
+
+        return doubled_by_threading(lst[1:], answer_lst)
+
+
+print(doubled_by_threading([1,2,3], []))
+
+# # Here’s how you do that by threading it through each recursive call 
+# #(i.e. passing the updated current state to each recursive call as arguments):
+
+# def sum_recursive(current_number, accumulated_sum):
+ 
+#     if current_number == 11:
+#         return accumulated_sum
+
+#     else:
+#         return sum_recursive(current_number + 1, accumulated_sum + current_number)
+
+# print(sum_recursive(1, 0))
+
 
 
 
