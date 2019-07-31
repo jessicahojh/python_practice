@@ -336,13 +336,26 @@ print(no_dupes([2,5,7,10], [])) #True
 def fibb(n):
 
     if n == 0 or n == 1:
-        return 1
+        return n
 
     else:
         return fibb(n-2) + fibb(n-1) 
 
 
-print(fibb(5)) #8
+print(fibb(6)) #8
+
+
+memo = {0:0, 1:1}
+def fibb_with_memo(n):
+
+    if n in memo.keys():
+        return memo[n]
+
+    else:
+        return fibb_with_memo(n-2) + fibb_with_memo(n-1)
+
+print(fibb_with_memo(6)) #8
+
 
 
 
