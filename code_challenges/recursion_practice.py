@@ -26,10 +26,10 @@ print(sum_range(3)) # 1+2+3 = 6
 print(sum_range(5)) # 1+2+3+4+5 = 15
 
 # 5 
-# 5-1 + 5
-# 4-1 + 4
-# 3-1 + 3
-# 2-1 + 2
+# 4 + 5
+# 3 + 4
+# 4 + 3
+# 1 + 2
 # 1
 
 
@@ -181,6 +181,7 @@ print(isPalindrome('asdfda')) # False
 print(isPalindrome('asdffdsa')) # True
 
 
+print("######")
 
 def count_cons(s):
     """count number of non vowel letters in string"""
@@ -188,7 +189,7 @@ def count_cons(s):
     if len(s) == 0:
         return 0
 
-    count = 0
+    # count = 0
     vowels = 'aeiou'
 
     if s[0] not in vowels:
@@ -204,6 +205,8 @@ print(count_cons('geekforgeeks'))
 # Write a function that takes a list of integers, and finds the maximum of the 
 # list using recursion.
 
+print("HERE")
+
 def find_max(lst):
 
     if len(lst) == 1:
@@ -212,6 +215,20 @@ def find_max(lst):
         return max(lst[0], find_max(lst[1:]))
 
 print(find_max([2,5,7,1,8,3]))
+
+print("END HERE")
+
+# 2, [5,7,1,8,3]
+# 5, [7,1,8,3]
+# 7, [1,8,3]
+# 1, [8,3]
+# 8, [3]
+
+# [2,5,10,7,1]
+# 2, [5,10,7,1]
+# 5, [10,7,1]
+# 10, [7,1]
+# 7, [1]
 
 # Write a function that prints out each element in a given list using recursion.
 
@@ -230,7 +247,7 @@ print(print_each([4,5,2,7,1]))
 
 current_number = 1
 
-def print_to_5():
+def print_to_5_global():
 
     global current_number
 
@@ -241,34 +258,26 @@ def print_to_5():
         print(current_number)
         current_number += 1
 
-        return print_to_5()
+        return print_to_5_global()
 
 
-print(print_to_5())
-
-# # Here’s how you maintain the state by keeping it in global scope:
-
-# # Global mutable state
-# current_number = 1
-# accumulated_sum = 0
+print(print_to_5_global())
 
 
-# def sum_recursive():
-#     global current_number
-#     global accumulated_sum
-#     # Base case
-#     if current_number == 11:
-#         return accumulated_sum
-#     # Recursive case
-#     else:
-#         accumulated_sum = accumulated_sum + current_number
-#         current_number = current_number + 1
-#         return sum_recursive()
+def print_to_n(n, current_number):
 
-# print(sum_recursive())
+    if current_number == n+1:
+        return ""
 
-# Write a function that takes a list of integers, and returns a list of each 
-# integer in that list doubled, using recursion.
+    else:
+        print(current_number)
+
+        return print_to_n(n, current_number+1)
+
+
+
+print(print_to_n(10, 1))
+
 
 doubled_lst = []
 
@@ -301,18 +310,41 @@ def doubled_by_threading(lst, answer_lst):
 
 print(doubled_by_threading([1,2,3], []))
 
-# # Here’s how you do that by threading it through each recursive call 
-# #(i.e. passing the updated current state to each recursive call as arguments):
+def no_dupes(lst, holding_lst):
+    """True if there is no dupes"""
 
-# def sum_recursive(current_number, accumulated_sum):
- 
-#     if current_number == 11:
-#         return accumulated_sum
+    if len(lst) == 0:
+        return True
 
-#     else:
-#         return sum_recursive(current_number + 1, accumulated_sum + current_number)
+    else:
+        if lst[0] in holding_lst:
+            return False
 
-# print(sum_recursive(1, 0))
+        elif lst[0] not in holding_lst:
+            holding_lst.append(lst[0])
+
+            return no_dupes(lst[1:], holding_lst)
+
+
+print(no_dupes([2,5,7,10,2], [])) #False
+print(no_dupes([2,5,7,10], [])) #True
+
+
+
+# function to generate the nth fibb number
+# 0, 1, 1, 2, 3, 5, 8, 13, 21 etc
+def fibb(n):
+
+    if n == 0 or n == 1:
+        return 1
+
+    else:
+        return fibb(n-2) + fibb(n-1) 
+
+
+print(fibb(5)) #8
+
+
 
 
 
