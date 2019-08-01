@@ -427,6 +427,17 @@ print(nested_list_sum([1, 2, [3,4], [5,6]]))
 print(nested_list_sum([1, 2, [3,4, [5,6]]]))
 
 
+def power(a, b):
+
+    if b == 1:
+        return a 
+
+    else:
+        return power(a, b-1) * a
+
+print(power(3, 4)) # 81
+
+
 
 
 
