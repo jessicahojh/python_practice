@@ -356,6 +356,68 @@ def fibb_with_memo(n):
 
 print(fibb_with_memo(6)) #8
 
+print("Doing Kibb probs")
+
+
+def kibb(n, k):
+    """n is the nth num while k is the number of nums needed to be added before"""
+
+    if n < k-1:
+        return 0
+
+    elif n == k-1:
+        return 1
+
+    else:
+        return sum(kibb(n-x, k) for x in range(1, k+1))
+
+# 0,0,0,1,1,2,4,8,15
+print(kibb(0, 4)) 
+print(kibb(1, 4))
+print(kibb(2, 4))
+print(kibb(3, 4))
+print(kibb(4, 4))
+print(kibb(5, 4))
+print(kibb(6, 4))
+print(kibb(7, 4))
+print(kibb(8, 4))
+
+
+
+kibb_memo = {0:1}
+
+def kibb_with_memo(n, k):
+
+    #create initial memo
+    for x in range(k):
+        kibb_memo[x] = 0
+
+    kibb_memo[k] = 1
+
+    if n in kibb_memo.keys():
+        return kibb_memo[n]
+    else:
+        return sum(kibb_with_memo(x-1, k) for x in range(k+1))
+
+print(kibb(0, 4)) 
+print(kibb(1, 4))
+print(kibb(2, 4))
+print(kibb(3, 4))
+print(kibb(4, 4))
+print(kibb(5, 4))
+print(kibb(6, 4))
+print(kibb(7, 4))
+print(kibb(8, 4))
+
+
+
+
+
+
+
+
+
+
 
 
 
