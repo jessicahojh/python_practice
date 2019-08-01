@@ -410,6 +410,23 @@ print(kibb(7, 4))
 print(kibb(8, 4))
 
 
+def nested_list_sum(lst):
+
+    total = 0
+
+    for element in lst:
+        if type(element) == type([]):
+            total = total + nested_list_sum(element)
+        else:
+            total = total + element
+
+    return total
+
+
+print(nested_list_sum([1, 2, [3,4], [5,6]]))
+print(nested_list_sum([1, 2, [3,4, [5,6]]]))
+
+
 
 
 
