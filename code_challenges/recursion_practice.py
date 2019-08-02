@@ -335,14 +335,26 @@ print(no_dupes([2,5,7,10], [])) #True
 # 0, 1, 1, 2, 3, 5, 8, 13, 21 etc
 def fibb(n):
 
+    print("running", n)
     if n == 0 or n == 1:
+        print("n is 0 or 1")
         return n
 
     else:
+        print("about to run", n, "-2", " , ", n, "-1")
         return fibb(n-2) + fibb(n-1) 
 
 
 print(fibb(6)) #8
+
+#                        fibb(6)                                 fibb(5)
+#             fibb(4)                 fibb(3)           fibb(3)        fibb(2)
+#        fibb(2)     fibb(3)     fibb(1)   fibb(2)  fibb(2) fibb(1)   fibb(0) fibb(1)
+# fibb(0) fibb(1) fibb(1) fibb(2)
+#                       fibb(0) fibb(1)     
+
+# tree traversal
+# do this non recursively
 
 
 memo = {0:0, 1:1}
@@ -436,6 +448,39 @@ def power(a, b):
         return power(a, b-1) * a
 
 print(power(3, 4)) # 81
+
+
+# def int_to_string(x):
+
+#     pass
+
+# print(int_to_string(123))
+
+# def to_string(n,base):
+
+#    conver_tString = "0123456789ABCDEF"
+
+#    if n < base:
+#       return conver_tString[n]
+#    else:
+#       return to_string(n//base,base) + conver_tString[n % base]
+
+# print(to_string(2835,16))
+
+
+def min_recursive(lst):
+
+    if len(lst) == 1:
+        return lst[0]
+
+    else:
+        return min(lst[0], min_recursive(lst[1:]))
+
+
+
+print(min_recursive([6,2,8,4,1,10,3])) #1
+
+
 
 
 

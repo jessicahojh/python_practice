@@ -83,10 +83,19 @@ class LinkedList(object):
 
         self.tail = new_node # no matter what, the new node is also a tail now
 
-    def insert(self, data):
+    def insert(self, insert_after, data):
         """insert node with data to anywhere in the middle of the linked list"""
 
-        pass
+        new_node = Node(data)
+        current = self.head
+
+        while current is not None:
+            if current.data == insert_after:
+                new_node.next = current.next
+                current.next = new_node
+           
+            current = current.next
+
 
     def remove(self, value):
         """remove node with given value"""
@@ -234,9 +243,12 @@ if __name__ == '__main__':
     ll.append("berry")
     ll.append("cherry")
     ll.print_list()
+    ll.insert("berry", "grape")
+    ll.print_list()
     ll.print_list_reverse()
     ll.print_lst_reverse_recursive()
     ll.print_lst_reverse_recursive()
+    
 
     print('')
 

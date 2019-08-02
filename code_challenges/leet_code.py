@@ -1444,6 +1444,49 @@ def practice_dict(word):
 print(practice_dict("elephant"))
 
 
+# lambda practice
+# lambda functions are single-use throw-away functions
+
+add5 = lambda x: x + 5
+print(add5(7))
+
+
+list1 = [("eggs", 5.25), ("honey", 9.70), ("carrots", 7.43)]
+list1.sort(key = lambda x: x[0])
+print(list1)
+
+
+list2 = [("eggs", 5.25), ("honey", 9.70), ("carrots", 7.43)]
+list2.sort(key = lambda x: x[1])
+print(list2)
+
+
+all_nums = [1,2,3,4,5,6]
+even_nums = list(filter(lambda x: x%2 == 0, all_nums))
+print(even_nums)
+
+
+orig_nums = [1,2,3,4,5,6]
+squared = list(map(lambda x: x ** 2, orig_nums))
+print(squared)
+
+
+starts_with_J = lambda x: True if x.startswith('J') else False
+print(starts_with_J("Jessica"))
+
+
+wordb4 = lambda s, w: s.split()[s.split().index(w)-1] if w in s else None
+sentence = "Four score and seven years ago"
+print(wordb4(sentence, 'seven'))
+
+
+# list comprehension practice
+
+
+
+
+
+
 
 
 
