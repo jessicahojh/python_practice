@@ -147,12 +147,21 @@ class BinaryTreeNode(object):
 
         current = self
 
+        # if there's a left, call function again (recurse)
+        # once there are no more in the left, print current 
+        # check if there's a right
+        # if there's a right, call function again (recurse)
+        # if there's no right, print current
+
         if current.left:
+            print("Current is:", current, "There's a left." )
             current.left.print_tree_in_order()
+
 
         print(current)
 
         if current.right:
+            print("Current is:", current, "There's a right.")
             current.right.print_tree_in_order()
 
 
@@ -198,10 +207,12 @@ if __name__ == '__main__':
     tree.insert(6)
     tree.insert(25)
     tree.insert(1)
+    tree.insert(3)
 
     print(tree.find(25))
     print('')
 
+    print("BREAK")
     tree.print_tree_in_order()
 
 
