@@ -1500,6 +1500,28 @@ print(common_num)
 #             print(a)
 
 
+# n kids are sitting in a circle
+# k toy available to distribute
+# i position to start from
+# which kid will get the last toy?
+
+def kids_and_toys(n,k,i):
+
+
+    while k > 0:
+        k -= 1
+        if i > n:
+            i = 1
+        else:
+            i += 1
+
+    return i
+
+
+
+print(kids_and_toys(3,5,1)) #2
+print(kids_and_toys(4,3,3)) #1
+
 
 
 
