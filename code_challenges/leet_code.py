@@ -1563,6 +1563,164 @@ print(two_sum_attempt([2,7,11,15], 9)) #[0,1]
 print(two_sum_attempt([3,2,4], 6)) #[1,2]
 
 
+#You are given two non-empty linked lists representing two non-negative integers. 
+#The digits are stored in reverse order and each of their nodes contain a single 
+#digit. Add the two numbers and return it as a linked list.
+
+#You may assume the two numbers do not contain any leading zero, except the number
+#0 itself.
+
+# Definition for singly-linked list.
+class Node(object):
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList(object):
+    """Linked List"""
+
+    def __init__(self):
+        self.head = None
+        self.tail = None
+
+    def append(self, data):
+        """append node with data to end of list"""
+
+        new_node = Node(data)
+
+        if self.head is None: 
+            self.head = new_node 
+
+        if self.tail is not None:
+            self.tail.next = new_node
+
+        self.tail = new_node
+
+    def print_list(self):
+        """print all items in the list"""
+
+        current = self.head
+
+        while current is not None:
+            print(current.data)
+            current = current.next
+
+class solution(object):
+
+    def add_two_reversed_ll(self, l1, l2):
+
+        answer = LinkedList()
+
+        # answer = []
+
+        current_1 = l1.head
+        current_2 = l2.head
+
+        carry = 0
+
+        while current_1 or current_2:
+
+            if current_1 == None:
+                answer.append(current_2.data)
+                current_2 = current_2.next
+
+            elif current_2 == None:
+                answer.append(current_1.data)
+                current_1 = current_1.next
+
+            elif current_1 and current_2:
+
+                addition = current_1.data + current_2.data
+
+                if addition < 10 and carry == 1:
+                    answer.append(addition + 1)
+                    carry = 0
+                elif addition < 10 and carry == 0:
+                    answer.append(addition)
+                elif addition > 9 and carry == 1:
+                    answer.append((addition-10)+1)
+                elif addition > 9 and carry == 0:
+                    answer.append(addition-10)
+                    carry = 1
+
+                current_1 = current_1.next
+                current_2 = current_2.next
+
+        print(answer.print_list())
+
+
+
+        # l1_int = []
+        
+        # current_1 = l1.head
+        
+        # while current_1 != None:
+        #     l1_int.append(current_1.data)
+        #     current_1 = current_1.next
+            
+        # l2_int = []
+        
+        # current_2 = l2.head
+        
+        # while current_2 != None:
+        #     l2_int.append(current_2.data)
+        #     current_2 = current_2.next
+
+
+        # l1_int = l1_int[::-1]
+        # l2_int = l2_int[::-1]
+
+        # l1_int = [str(i) for i in l1_int] 
+        # l1_int = int("".join(l1_int))
+
+        # l2_int = [str(i) for i in l2_int] 
+        # l2_int = int("".join(l2_int))
+
+        # int_answer = l1_int + l2_int 
+
+
+
+# ll_1 = LinkedList()
+# ll_1.append(2)
+# ll_1.append(4)
+# ll_1.append(3)
+# ll_2 = LinkedList()
+# ll_2.append(5)
+# ll_2.append(6)
+# ll_2.append(4)
+
+# ll_1 = LinkedList()
+# ll_1.append(2)
+# ll_1.append(4)
+# ll_1.append(3)
+# ll_2 = LinkedList()
+# ll_2.append(5)
+# ll_2.append(6)
+# ll_2.append(4)
+# ll_2.append(2)
+
+ll_1 = LinkedList()
+ll_1.append(2)
+ll_1.append(4)
+ll_1.append(3)
+ll_1.append(2)
+ll_1.append(3)
+ll_2 = LinkedList()
+ll_2.append(5)
+ll_2.append(6)
+ll_2.append(4)
+
+
+test1 = solution()
+
+print(test1.add_two_reversed_ll(ll_1, ll_2))
+# Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+# Output: 7 -> 0 -> 8
+# Explanation: 342 + 465 = 807
+
+
+
+
 
 
 

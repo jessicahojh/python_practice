@@ -22,6 +22,7 @@ class LinkedList(object):
             current = current.next
 
     def print_list_reverse(self):
+        """reverse then print"""
 
         prev = None
         current = self.head
