@@ -1718,6 +1718,26 @@ print(test1.add_two_reversed_ll(ll_1, ll_2))
 # Output: 7 -> 0 -> 8
 # Explanation: 342 + 465 = 807
 
+print("BREAK")
+
+import math
+
+def median_two_sorted_arrays(nums1, nums2):
+
+    new_array = sorted(nums1 + nums2)
+        
+    if len(new_array) % 2 == 0:
+        first_num_index = int(len(new_array)/2) - 1
+        second_num_index = first_num_index + 1
+        return((new_array[first_num_index]+new_array[second_num_index])/2)
+        
+    else:
+        return(new_array[math.ceil(len(new_array)/2)]-1)
+
+print(median_two_sorted_arrays([1,3], [2]))
+print(median_two_sorted_arrays([1,2], [3,4]))
+
+
 
 
 
