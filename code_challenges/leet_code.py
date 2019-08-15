@@ -1523,6 +1523,44 @@ print(kids_and_toys(3,5,1)) #2
 print(kids_and_toys(4,3,3)) #1
 
 
+def palindrome_number(num):
+
+    string_num = str(num)
+
+    i = 0
+    j = len(string_num)-1
+
+    while i < j:
+        if string_num[i] == string_num[j]:
+            i += 1
+            j -= 1
+        else:
+            return False
+
+    return True
+
+
+
+print(palindrome_number(121)) #true
+print(palindrome_number(-121)) #false
+print(palindrome_number(10)) #false
+print(palindrome_number(1001)) #true
+
+
+def two_sum_attempt(nums, target):
+
+    for index, num in enumerate(nums):
+        print(index, num)
+        needed_num = target - num
+        print(needed_num)
+        if needed_num in nums:
+            index_needed_num = nums.index(needed_num)
+            if index_needed_num != index:
+                return([index, index_needed_num])
+
+
+print(two_sum_attempt([2,7,11,15], 9)) #[0,1]
+print(two_sum_attempt([3,2,4], 6)) #[1,2]
 
 
 
