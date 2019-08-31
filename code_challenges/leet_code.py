@@ -1739,16 +1739,126 @@ print(median_two_sorted_arrays([1,2], [3,4]))
 
 
 
+def longest_common_prefix(lst):
+
+    lst.sort(key=len)
+    print(lst)
+
+print(longest_common_prefix(['flower', 'flow', 'flight']))
 
 
+print("KEEPTRUCKIN")
+
+def goodSegment(badNumbers, l, r):
+
+    sorted_badNumbers = sorted(badNumbers)
+
+    longest_segment = sorted_badNumbers[0]-l
+
+    print(sorted_badNumbers)
+
+    for num in range(1, len(sorted_badNumbers)):
+        
+        if sorted_badNumbers[num]-(sorted_badNumbers[num-1]+1) > longest_segment and sorted_badNumbers[num]<r:
+            longest_segment = sorted_badNumbers[num]-(sorted_badNumbers[num-1]+1)
+
+    if r - sorted_badNumbers[-1] > longest_segment:
+        longest_segment = r - sorted_badNumbers[-1]
+    if r < sorted_badNumbers[-1] and r - sorted_badNumbers[-2] > longest_segment:
+        longest_segment = r - sorted_badNumbers[-2]
 
 
+    return longest_segment
+
+print(goodSegment([37, 7, 22, 15, 49, 60], 3, 48)) #14
+print(goodSegment([8, 6, 20, 12], 1, 30)) #10
+print(goodSegment([5, 4, 2, 15], 1, 10)) #5
+
+print("BREAK")
+
+def jobOffers(scores, lowerLimits, upperLimits):
+
+    answer = []
+    count = 0
+
+    for x in range(len(lowerLimits)):
+        # limit_pairs = [lowerLimits[x], upperLimits[x]]
+        # print(limit_pairs)
+        for score in scores:
+            # print(score)
+            if score >= lowerLimits[x] and score <= upperLimits[x]:
+                count += 1
+                # print(count)
+        answer.append(count)
+        count = 0
+
+    return answer
 
 
+print(jobOffers([1, 3, 5, 6, 8],[2] ,[6])) #[3]
+print(jobOffers([4,8,7],[2,4],[8,4])) #[3, 1]
 
 
+def transpose_list(list_of_lists):
+
+    return [list(row) for row in zip(*list_of_lists)]
+
+print(transpose_list([[1, 4, 7], [2, 5, 8], [3, 6, 9]]))
+#[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+
+def pal(x):
+
+    if x < 0:
+        return False
+    else:
+        make_list = [int(y) for y in str(x)]
+
+        reverse_list = make_list[::-1]
+
+        if make_list == reverse_list:
+            return True
+        else:
+            return False
 
 
+print(pal(121)) #True
+print(pal(-121)) #False
+print(pal(10)) #False
+
+print('BREAK-----------')
+
+def isValid(s):
+
+        
+    holder = []
+    dict = {'(':')','[':']','{':'}'}
+    
+        
+    if len(s) == 0:
+        return True
+        
+    if len(s) < 2:
+        return False
+        
+    for x in s:
+        if x in dict.keys():
+            holder.append(x)
+        elif x in dict.values() and len(holder) > 0:
+            for key, value in dict.items(): 
+                if x == value and holder[-1] == key:
+                    holder.pop()
+                elif x == value and holder[-1] != key:
+                    holder.append(x)
+        elif x in dict.values() and len(holder) == 0:
+            return False
+            
+    if len(holder) == 0:
+        return True
+    else:
+        return False
+        
+print(isValid('[])'))
+print(isValid('()'))
 
 
 
