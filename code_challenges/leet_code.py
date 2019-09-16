@@ -1861,6 +1861,7 @@ print(isValid('[])'))
 print(isValid('()'))
 
 
+# https://leetcode.com/problems/shortest-distance-to-a-character/
 def shortest_dist_to_char(s, c):
 
     answer = []
@@ -1881,10 +1882,34 @@ def shortest_dist_to_char(s, c):
 
     return answer
 
-
-
-
 print(shortest_dist_to_char("loveleetcode", "e"))
+
+
+# https://leetcode.com/problems/single-number/
+def single_number(lst):
+
+    dictionary = {}
+
+    for num in lst:
+        if num in dictionary.keys():
+            dictionary[num] +=1
+        else:
+            dictionary[num] = 1
+
+    for key, values in dictionary.items():
+        if values == 1:
+            return key
+
+print(single_number([2,2,1])) #1
+print(single_number([4,1,2,1,2])) #4
+
+
+
+
+
+
+
+
 
 
 
