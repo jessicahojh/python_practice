@@ -1861,4 +1861,30 @@ print(isValid('[])'))
 print(isValid('()'))
 
 
+def shortest_dist_to_char(s, c):
+
+    answer = []
+
+    c_positions = []
+
+    for i, letter in enumerate(s):
+        if letter == c:
+            c_positions.append(i)
+
+    for i, letter in enumerate(s):
+        shortest_dist = len(s)
+        for num in c_positions:
+            distance = abs(i-num)
+            if distance < shortest_dist:
+                shortest_dist = distance
+        answer.append(shortest_dist)
+
+    return answer
+
+
+
+
+print(shortest_dist_to_char("loveleetcode", "e"))
+
+
 
