@@ -1873,7 +1873,7 @@ def shortest_dist_to_char(s, c):
             c_positions.append(i)
 
     for i, letter in enumerate(s):
-        shortest_dist = len(s)
+        shortest_dist = len(s) #12
         for num in c_positions:
             distance = abs(i-num)
             if distance < shortest_dist:
@@ -1890,11 +1890,11 @@ def single_number(lst):
 
     dictionary = {}
 
-    for num in lst:
-        if num in dictionary.keys():
-            dictionary[num] +=1
+    for x in lst:
+        if x in dictionary.keys():
+            dictionary[x] +=1
         else:
-            dictionary[num] = 1
+            dictionary[x] = 1
 
     for key, values in dictionary.items():
         if values == 1:
@@ -1906,6 +1906,71 @@ print(single_number([4,1,2,1,2])) #4
 
 
 
+def even_then_odd(arr):
+
+    answer = []
+
+    for num in arr:
+        if num % 2 == 0:
+            answer.append(num)
+
+    for num in arr:
+        if num % 2 != 0:
+            answer.append(num)
+
+
+    return answer
+
+
+print(even_then_odd([3,1,2,4])) # 2,4,1,3
+
+
+print("BREAK------")
+
+
+
+def set_matrix_zero(matrix):
+
+    column_length = len(matrix[0])
+    row_length = len(matrix)
+
+    row_has_0 = []
+    column_has_0 = []
+
+    for i, row in enumerate(matrix):
+        if 0 in row:
+            row_has_0.append(i)
+    
+    i = 0
+    while i < row_length+1:
+        for row in matrix:
+            if row[i] == 0:
+                column_has_0.append(i)
+        i += 1
+
+    print(column_has_0)
+
+    for row_num in row_has_0:
+        for num in matrix[row_num]:
+            matrix[row_num][num] = 0
+
+    for column_num in column_has_0:
+        while i < row_length+1:
+            
+
+
+
+# print(set_matrix_zero([
+#   [1,1,1],
+#   [1,0,1],
+#   [1,1,1]
+# ]))
+
+print(set_matrix_zero([
+  [0,1,2,0],
+  [3,4,5,2],
+  [1,3,1,5]
+]))
 
 
 
