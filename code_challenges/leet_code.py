@@ -1942,29 +1942,32 @@ def set_matrix_zero(matrix):
             row_has_0.append(i)
     
     i = 0
-    while i < row_length+1:
+    while i < column_length:
         for row in matrix:
             if row[i] == 0:
                 column_has_0.append(i)
         i += 1
 
-    print(column_has_0)
 
     for row_num in row_has_0:
-        for num in matrix[row_num]:
+        for num in range(len(matrix[row_num])):
             matrix[row_num][num] = 0
 
+    
     for column_num in column_has_0:
-        while i < row_length+1:
-            
+        i = 0
+        while i < row_length:
+            matrix[i][column_num] = 0
+            i += 1
+
+    return matrix
 
 
-
-# print(set_matrix_zero([
-#   [1,1,1],
-#   [1,0,1],
-#   [1,1,1]
-# ]))
+print(set_matrix_zero([
+  [1,1,1],
+  [1,0,1],
+  [1,1,1]
+]))
 
 print(set_matrix_zero([
   [0,1,2,0],
