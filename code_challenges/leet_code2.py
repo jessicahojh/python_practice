@@ -87,3 +87,28 @@ def is_anagram(s,t):
 print(is_anagram('hello', 'hello')) 
 print(is_anagram('hello', 'heloo'))
 print(is_anagram('helo', 'hello'))
+
+print('')
+
+def group_anagrams(words):
+
+    grouped = {}
+
+    for word in words:
+        to_list_word = list(word)
+        to_list_word.sort()
+        sorted_word = ''.join(to_list_word)
+
+        if sorted_word not in grouped.keys():
+            grouped[sorted_word] = [word]
+        elif sorted_word in grouped.keys():
+            grouped[sorted_word].append(word)
+
+    return grouped.values()
+
+print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
+# [
+#   ["ate","eat","tea"],
+#   ["nat","tan"],
+#   ["bat"]
+# ]
