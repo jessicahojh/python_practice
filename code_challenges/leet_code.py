@@ -1976,8 +1976,70 @@ print(set_matrix_zero([
 ]))
 
 
+# a-z   01-26
+# aa-az 27-52
+# ba-bz 53-78
+# ca-cz
+# da-dz
+# ...
+# aaa-aaz
+# aba-abz
+
+# (number given)/26 will give you the row
+# row divided by 26 will give you how many letters
+# 
+
+def excel_table(num):
+
+    letters = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
+    
+    answer = []
+
+    row = int(num/26)
+    remainder = num % 26
+
+    if num < 27:
+        answer.append(letters[remainder-1])
+    else:
+        answer.append(letters[row-1])
+        answer.append(letters[remainder-1])
+
+    return answer
+
+print(excel_table(24)) #x
+print(excel_table(55)) #bc
+print(excel_table(701)) #xy
+# print(excel_table(1035))
+
+print('')
 
 
+def longest_substring(s):
 
+    max_length = 0
+    holder = []
+
+    for i in range(len(s)-1):
+        holder.append(s[i])
+        # print(holder)
+        j = i + 1
+
+        while s[j] not in holder:
+            holder.append(s[j])
+            # print("no repeat", holder)
+            if j < len(s) - 1:
+                j = j + 1
+            
+        if len(holder) > max_length:
+            max_length = len(holder)
+        
+        holder = []
+
+    return max_length
+
+print(longest_substring('abcabcbb')) #3
+print(longest_substring('bbba')) #2
+print(longest_substring('bbb')) #1
+print(longest_substring('pwwkew')) #3
 
 
