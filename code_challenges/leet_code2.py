@@ -112,3 +112,26 @@ print(group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"]))
 #   ["nat","tan"],
 #   ["bat"]
 # ]
+
+print('')
+
+def is_valid_paren(s):
+
+    stack = []
+    pairs = {'(':')', '{':'}', '[':']'}
+
+    for char in s:
+        if char in pairs.keys():
+            stack.append(char)
+        elif char in pairs.values() and char == pairs[stack[-1]]:
+            stack.pop()
+
+    if len(stack) == 0:
+        return True
+    else:
+        return False
+
+print(is_valid_paren('({[]})'))
+print(is_valid_paren('([]}'))
+print(is_valid_paren('({[]}){{'))
+print(is_valid_paren('({[]})(){}'))
