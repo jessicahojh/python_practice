@@ -221,19 +221,22 @@ print('')
 def jump_game(nums):
 
     last_index = len(nums)-1
-    print('last index is', last_index)
+    # print('last index is', last_index)
         
     i = 0
     
     while i < last_index and nums[i] != 0:
+        # print('current index is', i)
         i = i + nums[i]
-        print('now on index', i)
-        
-    if i == last_index:
-        return True
-    else:
-        return False
+        if i >= last_index:
+            if i >= last_index:
+                return True
+            else:
+                return False
+        elif nums[i] == 0:
+            return False
 
 print(jump_game([2,3,1,1,4])) #true
 print(jump_game([3,2,1,0,4])) #false
-print(jump_game([3,2,1,3,4])) #false
+print(jump_game([3,2,1,3,4])) #true
+print(jump_game([2,0])) #true
