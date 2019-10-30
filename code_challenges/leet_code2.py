@@ -135,3 +135,105 @@ print(is_valid_paren('({[]})'))
 print(is_valid_paren('([]}'))
 print(is_valid_paren('({[]}){{'))
 print(is_valid_paren('({[]})(){}'))
+
+print('')
+
+def climb_stairs(n):
+
+    if n <=3:
+        return n
+
+    ways = [0,1,2,3]
+
+    i = 4
+    while i <= n:
+        ways.append(ways[i-1] + ways[i-2])
+        i = i + 1
+
+    return ways[-1]
+
+print(climb_stairs(1))
+print(climb_stairs(2))
+print(climb_stairs(3))
+print(climb_stairs(4))
+print(climb_stairs(5))
+print(climb_stairs(6))
+
+print('')
+
+def house_robber(nums):
+    if len(nums) == 0:
+        return 0
+    if len(nums) == 1:
+        return nums[0]
+    if len(nums) == 2:
+        return max(nums[0], nums[1])
+
+    max_loot_at_nth = [nums[0], max(nums[0], nums[1])]
+
+    i = 2
+    while i < len(nums):
+        print(max_loot_at_nth)
+        max_loot_at_nth.append(
+            max(nums[i] + max_loot_at_nth[i-2], max_loot_at_nth[i-1]))
+        i = i + 1
+    
+    print(max_loot_at_nth)
+    return max_loot_at_nth[-1]
+
+# print(house_robber([3]))
+# print(house_robber([3,4]))
+# print(house_robber([5,6,7]))
+print(house_robber([4,1,1,7]))
+print(house_robber([200,7,100,500]))
+
+print('')
+
+def rob(nums):
+
+    rob1 = 0
+    rob2 = 0
+    i = 0
+    j = 1
+
+    while i < len(nums):
+        rob1 += nums[i]
+        i = i+2
+       
+   
+    while j < len(nums):
+        rob2 += nums[j]
+        j = j+2
+   
+    if rob1 > rob2:
+        return rob1
+    else:
+        return rob2
+
+# print(rob([3]))
+# print(rob([3,4]))
+# print(rob([5,6,7]))
+print(rob([4,1,1,7]))
+print(rob([200,7,100,500]))
+
+print('')
+
+def jump_game(nums):
+
+    last_index = len(nums)-1
+    print('last index is', last_index)
+        
+    i = 0
+    
+    while i < last_index and nums[i] != 0:
+        i = i + nums[i]
+        print('now on index', i)
+        
+    if i == last_index:
+        return True
+    else:
+        return False
+
+print(jump_game([2,3,1,1,4])) #true
+print(jump_game([3,2,1,0,4])) #false
+print(jump_game([3,2,1,3,4])) #false
