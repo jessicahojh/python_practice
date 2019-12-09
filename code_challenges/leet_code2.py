@@ -240,3 +240,215 @@ print(jump_game([2,3,1,1,4])) #true
 print(jump_game([3,2,1,0,4])) #false
 print(jump_game([3,2,1,3,4])) #true
 print(jump_game([2,0])) #true
+
+print('')
+
+# Longest increasing subsequence
+# def lis(nums):
+
+#     longest = 0
+    
+#     for i in range(len(nums)):
+#         print('i is', i)
+#         j = i + 1
+#         current_longest = 0
+#         while nums[j] > nums[i]:
+#             print('j is greater than i')
+#             current_longest += 1
+#             print('current longest is', current_longest)
+#             j =+ 1
+#             print('j is', j)
+#         if current_longest > longest:
+#             print('current longest is greater than prev long')
+#             longest = current_longest
+
+#     return longest
+
+# print(lis([10,9,2,5,3,7,101,18])) #4
+
+def coin_change(coins, amount):
+
+    coin_count = 0
+    coin_combo = sorted(coins)
+    coin_left = amount
+    largest_coin = len(coins)-1
+
+    print('sorted is', coin_combo)
+
+    while coin_left > 0:
+        if coin_combo[largest_coin] == coin_left:
+            coin_count += 1
+            return coin_count
+        elif coin_combo[largest_coin] < coin_left:
+            coin_left = coin_left - coin_combo[largest_coin]
+            coin_count += 1
+            print('coin left now', coin_left)
+        elif coin_combo[largest_coin] > coin_left:
+            if largest_coin > 0:
+                largest_coin -= 1
+            else:
+                return -1
+
+    return coin_count
+
+
+print(coin_change([186,419,83,408], 6249))
+# print(coin_change([1, 2, 5], 11)) #3
+# print(coin_change([2], 3)) #-1
+
+print('break')
+
+def max_sub_array(arr):
+
+    max_sub = arr[0]
+
+    for i, num in enumerate(arr):
+        holder = num
+        if holder > max_sub:
+                max_sub = holder
+
+        for j in range(i+1, len(arr)):
+            holder += arr[j]
+            if holder > max_sub:
+                max_sub = holder
+
+    return max_sub
+
+print(max_sub_array([-2,1,-3,4,-1,2,1,-5,4]))  #6 b/c [4,-1,2,1] has the largest sum
+print(max_sub_array([1]))  #1
+
+print('break')
+
+def rotate_arr(arr, k):
+
+    return arr[-k:] + arr[:-k]
+
+print(rotate_arr([1,2,3,4,5,6,7], 1))
+print(rotate_arr([1,2,3,4,5,6,7], 2))
+print(rotate_arr([1,2,3,4,5,6,7], 3))
+
+print('break')
+
+def move_zeros(arr):
+
+    zero_count = 0
+    zero_position = []
+
+    # detect zero's position
+    for i, num in enumerate(arr):
+        # print(num)
+        if num == 0:
+            zero_count += 1
+            zero_position.append(i)
+    
+    # reverse zero position
+    zero_position = zero_position[::-1]
+
+    # delete the zeros
+    for index in zero_position:
+        del arr[index]
+
+    # append the zeros back in array
+    for num in range(zero_count):
+        arr.append(0)
+
+    return arr
+
+
+print(move_zeros([0,1,0,3,12]))
+print(move_zeros([0,0,1]))
+
+print('break')
+
+def third_max_num(arr):
+    """Given a non-empty array of integers, return the third maximum number in this array. If it does not exist, return the maximum number. 
+    The time complexity must be in O(n). """
+
+    if len(set(arr)) < 3:
+        return max(arr)
+
+    sorted_arr = sorted(set(arr))
+    
+    return sorted_arr[-3]
+
+print(third_max_num([3,2,1])) #1
+print(third_max_num([10,3,5,7,2])) #5
+print(third_max_num([10,3,5,7,2,19])) #7
+print(third_max_num([1,2])) #2
+print(third_max_num([2,2,3,1])) #1
+
+print('break')
+
+# Find All Numbers Disappeared in an Array
+
+def disappeared(arr):
+
+    answer = []
+
+    for num in range(1, max(arr)):
+        if num not in arr:
+            answer.append(num)
+
+    return answer
+
+print(disappeared([4,3,2,7,8,2,3,1])) #[5,6]
+
+print('break')
+
+# Given a binary array, find the maximum number of consecutive 1s in this array.
+
+def consecutive_ones(arr):
+
+    max_consecutive = 0
+    temp = 0
+
+    for i, num in enumerate(arr):
+        if num == 1 and i == len(arr)-1:
+            temp += 1
+            if temp > max_consecutive:
+                max_consecutive = temp
+
+        elif num == 1:
+            temp += 1
+
+        elif num == 0:
+            if temp > max_consecutive:
+                max_consecutive = temp
+                temp = 0
+            elif temp < max_consecutive:
+                temp = 0
+            elif temp == max_consecutive:
+                temp = 0
+
+    return max_consecutive 
+
+print(consecutive_ones([1,1,0,1,1,1])) #3
+
+print('break')
+
+def height_checker(arr):
+
+    count = 0
+
+    correct_order = sorted(arr)
+
+    for i, num in enumerate(arr):
+        if num != correct_order[i]:
+            count += 1
+
+    return count
+
+print(height_checker([1,1,4,2,1,3])) #3, Students with heights 4, 3 and the last 1 are not standing in the right positions
+
+print('break')
+
+# def words(arr, chars):
+
+#     sum_answer = 0
+
+#     for word in arr:
+#         for letter in word:
+#             if letter in chars
+
+# print(words(["cat","bt","hat","tree"], "atach")) #The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6
+
