@@ -489,3 +489,63 @@ def relative_sort(arr1, arr2):
 
 print(relative_sort([2,3,1,3,2,4,6,7,9,2,19], [2,1,4,3,9,6])) #[2,2,2,1,4,3,3,9,6,7,19]
 
+print('break')
+
+def jewels_stones(j, s):
+
+    counter = 0
+    
+    for i in s:
+        if i in j:
+            counter += 1
+
+    return counter
+
+print(jewels_stones("aA", "aAAbbbb")) #3
+
+print('break')
+
+# https://leetcode.com/problems/n-repeated-element-in-size-2n-array/
+
+def repeated_element(lst):
+
+    half_length = len(lst)/2
+
+    dictionary = {}
+
+    for num in lst:
+        if num not in dictionary.keys():
+            dictionary[num] = 1
+        else:
+            dictionary[num] += 1
+
+    for key, value in dictionary.items():
+        if value == half_length:
+            return key
+
+
+print(repeated_element([5,1,5,2,5,3,5,4])) #5
+
+print("break")
+
+def daily_temp(T):
+
+    answer = []
+     
+    for i, temp in enumerate(T):
+        sliced = T[i+1:]
+        appended = False
+        for index, s in enumerate(sliced):
+            if s > temp:
+                answer.append(index + 1)
+                appended = True
+                break
+        if appended == False:
+            answer.append(0)
+
+    return answer
+    
+# print(daily_temp([73, 74, 75, 71, 69, 72, 76, 73])) # [1, 1, 4, 2, 1, 1, 0, 0]
+print(daily_temp([73, 74, 100, 75, 71, 69, 72, 76, 73])) # [1, 1, 0, 4, 2, 1, 1, 0, 0]
+
+
