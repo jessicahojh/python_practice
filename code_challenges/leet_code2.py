@@ -549,3 +549,41 @@ def daily_temp(T):
 print(daily_temp([73, 74, 100, 75, 71, 69, 72, 76, 73])) # [1, 1, 0, 4, 2, 1, 1, 0, 0]
 
 
+def combine(arrA, arrB, lastIndex):
+    indexA  = lastIndex
+    indexB = len(arrB)-1
+    writeIndex = len(arrA) - 1
+
+    while(indexB >= 0):
+        if arrB[indexB] >= arrA[indexA]:
+            arrA[writeIndex] = arrB[indexB]
+            indexB -= 1
+        else:
+            arrA[writeIndex] = arrA[indexA]
+            indexA -= 1
+        writeIndex -= 1
+
+    return arrA
+
+print(combine([1,2,3,4,5,6,-1,-1,-1,-1], [3,4,10,12], 5))
+
+def find(arr):
+
+    currSet = set(arr[0])
+    for subArr in arr[1:]:
+        newSet = set()
+        for j in subArr:
+            if j in currSet:
+                newSet.add(j)
+
+        currSet = newSet
+
+    return min(newSet)
+
+print(find([[1,3,5,10,20],
+            [3,5],
+            [5,20,100]])) #3 b/c it is the smallest num that occurred in all three subarrays
+        
+
+
+

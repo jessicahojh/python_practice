@@ -481,30 +481,14 @@ def min_recursive(lst):
 print(min_recursive([6,2,8,4,1,10,3])) #1
 
 
+def add_rec(lst):
+
+    if len(lst) == 1:
+        return lst[0]
+
+    else:
+        return lst[0] + add_rec(lst[1:])
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(add_rec([2,2,3,5])) #12
