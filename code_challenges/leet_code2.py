@@ -442,13 +442,50 @@ print(height_checker([1,1,4,2,1,3])) #3, Students with heights 4, 3 and the last
 
 print('break')
 
-# def words(arr, chars):
+def words(arr, chars):
 
-#     sum_answer = 0
+    sum_answer = 0
 
-#     for word in arr:
-#         for letter in word:
-#             if letter in chars
+    for word in arr:
+        holder = 0
+        char_arr = list(chars)
+        for letter in word:
+            if letter in char_arr:
+                holder += 1
+                char_arr.remove(letter)
+            if holder == len(word):
+                sum_answer += len(word)
 
-# print(words(["cat","bt","hat","tree"], "atach")) #The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6
+    return sum_answer
+
+print(words(["cat","bt","hat","tree"], "atach")) #The strings that can be formed are "cat" and "hat" so the answer is 3 + 3 = 6
+
+print('break')
+
+def relative_sort(arr1, arr2):
+    """Sort the elements of arr1 such that the relative ordering of items in arr1 are the same as in arr2.  
+    Elements that don't appear in arr2 should be placed at the end of arr1 in ascending order."""
+
+    answer = []
+
+    ending = []
+    matches = []
+
+    for x in arr1:
+        if x not in arr2:
+            ending.append(x)
+        else:
+            matches.append(x)
+
+    for i in arr2:
+        for j in matches:
+            if j == i:
+                answer.append(j)
+
+    ending = sorted(ending)
+
+    return answer + ending
+
+
+print(relative_sort([2,3,1,3,2,4,6,7,9,2,19], [2,1,4,3,9,6])) #[2,2,2,1,4,3,3,9,6,7,19]
 
