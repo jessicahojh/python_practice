@@ -617,6 +617,19 @@ print(find([[1,3,5,10,20],
 # company = Solution()  
 # company.getImportance([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1) #11
         
+print('BREAK')
+
+def strStr(haystack, needle):
+    
+    for i, letter in enumerate(haystack):
+        if letter == needle[0]:
+            isMatch = haystack[i: i+len(needle)] == needle
+            if isMatch:
+                return i
+            
+    return -1
+
+print(strStr('hello', 'll')) #2
 
 
 
