@@ -631,5 +631,27 @@ def strStr(haystack, needle):
 
 print(strStr('hello', 'll')) #2
 
+print("break")
+
+def lengthOfLastWord(s):
+    
+    word_lst = s.split(' ')
+
+    print(word_lst)
+    
+    cleaned_word_lst = []
+    
+    for item in word_lst:
+        if item != '':
+            cleaned_word_lst.append(item)
+
+    print(cleaned_word_lst)
+
+    if len(cleaned_word_lst) == 0:
+        return 0
+
+    return len(cleaned_word_lst[-1])
+
+print(lengthOfLastWord(' '))
 
 
