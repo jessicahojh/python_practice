@@ -654,4 +654,26 @@ def lengthOfLastWord(s):
 
 print(lengthOfLastWord(' '))
 
+def canConstruct(ransomNote, magazine):
+    
+    dictionary = {}
+    
+    for letter in magazine:
+        if letter not in dictionary.keys():
+            dictionary[letter] = 1
+        else:
+            dictionary[letter] += 1
+            
+    for item in ransomNote:
+        if item not in dictionary.keys():
+            return False
+        elif item in dictionary.keys():
+            dictionary[item] -= 1
+            
+    for num in dictionary.values():
+        if num < 0:
+            return False
+        
+    return True
+
 
