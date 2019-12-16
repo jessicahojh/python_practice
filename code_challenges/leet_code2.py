@@ -583,6 +583,39 @@ def find(arr):
 print(find([[1,3,5,10,20],
             [3,5],
             [5,20,100]])) #3 b/c it is the smallest num that occurred in all three subarrays
+
+# https://leetcode.com/problems/employee-importance/
+
+# class Employee(object):
+#     def __init__(self, id, importance, subordinates):
+#         # unique id of this employee
+#         self.id = id
+#         # the importance value of this employee
+#         self.importance = importance
+#         # the id of direct subordinates
+#         self.subordinates = subordinates
+
+# class Solution(object):
+#     def getImportance(self, employees, id):
+
+#         employee_dict = {}
+#         queue = [id]
+#         importance_sum = 0
+
+#         for employee in employees:
+#             employee_dict[employee.id] = employee
+            
+#         while(queue):
+#             employee_index = queue.pop(0)
+#             employee = employee_dict[employee_index]
+#             importance_sum += employee.importance
+#             queue.extend(employee.subordinates)
+        
+#         return importance_sum
+
+
+# company = Solution()  
+# company.getImportance([[1, 5, [2, 3]], [2, 3, []], [3, 3, []]], 1) #11
         
 
 

@@ -33,11 +33,11 @@ class Solution:
 
 # Merge Two Linked Lists
 
-# Definition for singly-linked list.
-class ListNode(object):
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+# # Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
 
 class Solution(object):
     def mergeTwoLists(self, l1, l2):
@@ -76,4 +76,63 @@ class Solution(object):
             s.next = q 
         if not q:
             s.next = p 
+
         return new_head
+
+###########################################################
+
+# Remove Duplicates from Linked Lists
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def deleteDuplicates(self, head: ListNode) -> ListNode:
+        
+        if not head:
+            return
+        
+        cur = head.next
+        start = head
+        prev = head
+        
+        while cur:
+            if cur.val == prev.val:
+                prev.next = cur.next
+            else:
+                prev = cur      
+                
+            cur = cur.next
+            
+        return start
+
+
+###########################################################
+
+# Reverse a Linked List
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def reverseList(self, head: ListNode) -> ListNode:
+        
+        current = head
+        prev = None
+        
+        while current:
+            nxt = current.next
+            current.next = prev
+
+            prev = current
+            current = nxt
+
+        head = prev
+        
+        return head
