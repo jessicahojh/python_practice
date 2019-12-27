@@ -677,3 +677,62 @@ def canConstruct(ransomNote, magazine):
     return True
 
 
+def compress(chars):
+    
+    dictionary = {}
+    
+    for item in chars:
+        if item in dictionary.keys():
+            dictionary[item] += 1
+        else:
+            dictionary[item] = 1
+
+    answer = []
+
+    for key, value in dictionary.items():
+        answer.append(key)
+        answer.append(str(value))
+
+
+    return answer
+
+print(compress(["a","a","b","b","c","c","c"])) #["a","2","b","2","c","3"]
+
+print('BREAK')
+
+# Longest Substring Without Repeating Characters
+
+def lengthOfLongestSubstring(s):
+    
+    current_longest = 0
+    
+    current_letters = []
+    
+    i = 0
+    
+    while i < len(s):
+        current_letters.append(s[i])
+        print(current_letters)
+        for index in range(i+1, len(s)):
+            if s[index] not in current_letters:
+                current_letters.append(s[index])
+                print(current_letters)
+            else:
+                if current_longest < len(current_letters):
+                    current_longest = len(current_letters)
+                    current_letters = []
+                    break
+                else:
+                    current_letters = []
+                    break
+        i += 1
+
+    return current_longest
+
+print(lengthOfLongestSubstring("abcabcbb")) #3
+print(lengthOfLongestSubstring("bbbbb")) #1
+print(lengthOfLongestSubstring("pwwkew")) #3
+
+print("BREAK")
+
+
